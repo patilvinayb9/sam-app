@@ -18,6 +18,9 @@ Resources:
       CodeUri: HelloWorldFunction
       Handler: helloworld.App::handleRequest
       Runtime: java11
+      AutoPublishAlias: live
+      DeploymentPreference:
+        Type: Canary10Percent5Minutes
       Architectures:
         - x86_64
       MemorySize: 512

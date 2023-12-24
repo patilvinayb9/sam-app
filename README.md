@@ -128,6 +128,6 @@ Next, you can use AWS Serverless Application Repository to deploy ready to use A
 
 ## Links
 
-Github Pipeline - https://github.com/patilvinayb9/sam-app/actions/runs/7309329369
+Github Pipeline - https://github.com/patilvinayb9/sam-app/actions
 Prod Stack - https://ap-south-1.console.aws.amazon.com/cloudformation/home?region=ap-south-1#/stacks/outputs?filteringText=&filteringStatus=active&viewNested=true&stackId=arn%3Aaws%3Acloudformation%3Aap-south-1%3A006464598930%3Astack%2Fsam-app-prod%2F403e1d80-a1b1-11ee-a790-063660f40866
 Prod URL - https://ou32pij8c0.execute-api.ap-south-1.amazonaws.com/Prod/hello/
