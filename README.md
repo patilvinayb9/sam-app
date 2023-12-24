@@ -125,3 +125,9 @@ sam delete --stack-name sam-app
 See the [AWS SAM developer guide](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html) for an introduction to SAM specification, the SAM CLI, and serverless application concepts.
 
 Next, you can use AWS Serverless Application Repository to deploy ready to use Apps that go beyond hello world samples and learn how authors developed their applications: [AWS Serverless Application Repository main page](https://aws.amazon.com/serverless/serverlessrepo/)
+
+## Links
+
+Github Pipeline - https://github.com/patilvinayb9/sam-app/actions/runs/7309329369
+Prod Stack - https://ap-south-1.console.aws.amazon.com/cloudformation/home?region=ap-south-1#/stacks/outputs?filteringText=&filteringStatus=active&viewNested=true&stackId=arn%3Aaws%3Acloudformation%3Aap-south-1%3A006464598930%3Astack%2Fsam-app-prod%2F403e1d80-a1b1-11ee-a790-063660f40866
+Prod URL - https://ou32pij8c0.execute-api.ap-south-1.amazonaws.com/Prod/hello/
