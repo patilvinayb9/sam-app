@@ -137,5 +137,8 @@ Outputs:
   Sample2FunctionIamRole:
     Description: "Implicit IAM Role created for Sample2 function"
     Value: !GetAtt Sample2FunctionRole.Arn
+  FrontendBucketName:
+    Description: "Frontend Bucket Name"
+    Value: !GetAtt FrontendBucket.Name
   Website:
     Value: !GetAtt CloudFrontDistribution.DomainName
