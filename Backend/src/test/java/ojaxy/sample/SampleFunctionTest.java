@@ -16,7 +16,7 @@ public class SampleFunctionTest {
     String content = result.getBody();
     assertNotNull(content);
     assertTrue(content.contains("\"message\""));
-    assertTrue(content.contains("\"hello refactor change\""));
+    assertTrue(content.contains("\"hello sample change\""));
     assertTrue(content.contains("\"location\""));
   }
 }
