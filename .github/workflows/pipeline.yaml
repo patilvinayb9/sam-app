@@ -190,6 +190,30 @@ jobs:
             --no-fail-on-empty-changeset \
             --role-arn ${TESTING_CLOUDFORMATION_EXECUTION_ROLE}
 
+      - name: Read frontend bucket name
+        run: |
+          echo "frontend_bucket_name_test=$( \
+            aws cloudformation describe-stacks \
+              --region ${TESTING_REGION} \
+              --stack-name ${TESTING_STACK_NAME} \
+              --query 'Stacks[0].Outputs[?OutputKey==`FrontendBucketName`].OutputValue' \
+              --output text \
+          )" >> $GITHUB_ENV
+
+      - name: Build frontend
+        working-directory: frontend
+        run: npm install && npm run build
+
+      - name: Clear frontend bucket
+        run: |
+          aws s3 rm s3://${{ env.frontend_bucket_name_test }} --recursive
+
+      - name: Deploy frontend
+        run: |
+          aws s3 cp frontend/build \
+            s3://${{ env.frontend_bucket_name_test }} \
+            --recursive
+
   integration-test:
     if: github.ref == 'refs/heads/main'
     needs: [deploy-testing]
@@ -233,3 +257,27 @@ jobs:
             --s3-bucket ${PROD_ARTIFACTS_BUCKET} \
             --no-fail-on-empty-changeset \
             --role-arn ${PROD_CLOUDFORMATION_EXECUTION_ROLE}
+
+      - name: Read frontend bucket name
+        run: |
+          echo "frontend_bucket_name_prod=$( \
+            aws cloudformation describe-stacks \
+              --region ${PROD_REGION} \
+              --stack-name ${PROD_STACK_NAME} \
+              --query 'Stacks[0].Outputs[?OutputKey==`FrontendBucketName`].OutputValue' \
+              --output text \
+          )" >> $GITHUB_ENV
+
+      - name: Build frontend
+        working-directory: frontend
+        run: npm install && npm run build
+
+      - name: Clear frontend bucket
+        run: |
+          aws s3 rm s3://${{ env.frontend_bucket_name_prod }} --recursive
+
+      - name: Deploy frontend
+        run: |
+          aws s3 cp frontend/build \
+            s3://${{ env.frontend_bucket_name_prod }} \
+            --recursive

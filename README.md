@@ -129,10 +129,13 @@ Next, you can use AWS Serverless Application Repository to deploy ready to use A
 ## Links
 
 Github Pipeline - https://github.com/patilvinayb9/sam-sampleFunction/actions
-Prod Stack - https://ap-south-1.console.aws.amazon.com/cloudformation/home?region=ap-south-1#/stacks/outputs?filteringText=&filteringStatus=active&viewNested=true&stackId=arn%3Aaws%3Acloudformation%3Aap-south-1%3A006464598930%3Astack%2Fsam-sampleFunction-prod%2F403e1d80-a1b1-11ee-a790-063660f40866
-Prod URL - https://ou32pij8c0.execute-api.ap-south-1.amazonaws.com/Prod/hello/
 Localhost - localhost:8080/hello
 
+Dev Stack Output - https://us-west-2.console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/outputs?filteringText=&filteringStatus=active&viewNested=true&stackId=arn%3Aaws%3Acloudformation%3Aus-west-2%3A006464598930%3Astack%2Fsam-app-dev%2F11da8140-a1b1-11ee-872a-02d40010caed
+Dev URL - https://napemqs469.execute-api.us-west-2.amazonaws.com/Prod/api/sample/
+
+Prod Stack Output - https://ap-south-1.console.aws.amazon.com/cloudformation/home?region=ap-south-1#/stacks/outputs?filteringText=&filteringStatus=active&viewNested=true&stackId=arn%3Aaws%3Acloudformation%3Aap-south-1%3A006464598930%3Astack%2Fsam-sampleFunction-prod%2F403e1d80-a1b1-11ee-a790-063660f40866
+Prod URL - https://ou32pij8c0.execute-api.ap-south-1.amazonaws.com/Prod/sample/
 
 ## Commands
 
