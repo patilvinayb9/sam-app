@@ -158,4 +158,7 @@ sam validate --lint
 
 Frontend
 
+nvm use 16
+npx create-react-app frontend
+
 
