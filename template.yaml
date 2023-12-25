@@ -32,7 +32,7 @@ Resources:
         Sample:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
-            Path: /sample
+            Path: /api/sample
             Method: get
 
   Sample2Function:
@@ -55,7 +55,7 @@ Resources:
         Sample2:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
-            Path: /sample2
+            Path: /api/sample2
             Method: get
 
 Outputs:
@@ -64,7 +64,7 @@ Outputs:
   # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
   SampleApi:
     Description: "API Gateway endpoint URL for Prod stage for sample lambda function"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/sample/"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/api/sample/"
   SampleFunction:
     Description: "Sample Lambda Function ARN"
     Value: !GetAtt SampleFunction.Arn
@@ -73,7 +73,7 @@ Outputs:
     Value: !GetAtt SampleFunctionRole.Arn
   Sample2Api:
     Description: "API Gateway endpoint URL for Prod stage for sample2 lambda function"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/sample2/"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/api/sample2/"
   Sample2Function:
     Description: "Sample2 Lambda Function ARN"
     Value: !GetAtt Sample2Function.Arn
