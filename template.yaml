@@ -139,6 +139,6 @@ Outputs:
     Value: !GetAtt Sample2FunctionRole.Arn
   FrontendBucketName:
     Description: "Frontend Bucket Name"
-    Value: !GetAtt FrontendBucket.Name
+    Value: !GetAtt FrontendBucket.BucketName
   Website:
     Value: !GetAtt CloudFrontDistribution.DomainName
