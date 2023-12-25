@@ -135,7 +135,7 @@ Dev Stack Output - https://us-west-2.console.aws.amazon.com/cloudformation/home?
 Dev URL - https://napemqs469.execute-api.us-west-2.amazonaws.com/Prod/api/sample/
 
 Prod Stack Output - https://ap-south-1.console.aws.amazon.com/cloudformation/home?region=ap-south-1#/stacks/outputs?filteringText=&filteringStatus=active&viewNested=true&stackId=arn%3Aaws%3Acloudformation%3Aap-south-1%3A006464598930%3Astack%2Fsam-sampleFunction-prod%2F403e1d80-a1b1-11ee-a790-063660f40866
-Prod URL - https://ou32pij8c0.execute-api.ap-south-1.amazonaws.com/Prod/sample/
+Prod URL - https://ou32pij8c0.execute-api.ap-south-1.amazonaws.com/Prod/api/sample/
 
 ## Commands
 
