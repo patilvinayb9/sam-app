@@ -27,7 +27,7 @@ public class Sample2Function implements RequestHandler<APIGatewayProxyRequestEve
                 .withHeaders(headers);
         try {
             final String pageContents = this.getPageContents("https://checkip.amazonaws.com");
-            String output = String.format("{ \"message\": \"hello sample2 change\", \"location\": \"%s\" }", pageContents);
+            String output = String.format("{ \"message\": \"hello sample2 change from backend\", \"location\": \"%s\" }", pageContents);
 
             return response
                     .withStatusCode(200)

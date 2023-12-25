@@ -15,7 +15,7 @@ Resources:
   SampleFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
-      CodeUri: Backend
+      CodeUri: backend
       Handler: ojaxy.sample.SampleFunction::handleRequest
       Runtime: java11
       AutoPublishAlias: live
@@ -38,7 +38,7 @@ Resources:
   Sample2Function:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
-      CodeUri: Backend
+      CodeUri: backend
       Handler: ojaxy.sample2.Sample2Function::handleRequest
       Runtime: java11
       AutoPublishAlias: live
