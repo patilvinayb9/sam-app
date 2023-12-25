@@ -1,4 +1,4 @@
-# sam-app
+# sam-sampleFunction
 
 This project contains source code and supporting files for a serverless application that you can deploy with the SAM CLI. It includes the following files and folders.
 
@@ -45,7 +45,7 @@ sam deploy --guided
 The first command will build the source of your application. The second command will package and deploy your application to AWS, with a series of prompts:
 
 * **Stack Name**: The name of the stack to deploy to CloudFormation. This should be unique to your account and region, and a good starting point would be something matching your project name.
-* **AWS Region**: The AWS region you want to deploy your app to.
+* **AWS Region**: The AWS region you want to deploy your sampleFunction to.
 * **Confirm changes before deploy**: If set to yes, any change sets will be shown to you before execution for manual review. If set to no, the AWS SAM CLI will automatically deploy application changes.
 * **Allow SAM CLI IAM role creation**: Many AWS SAM templates, including this example, create AWS IAM roles required for the AWS Lambda function(s) included to access AWS services. By default, these are scoped down to minimum required permissions. To deploy an AWS CloudFormation stack which creates or modifies IAM roles, the `CAPABILITY_IAM` value for `capabilities` must be provided. If permission isn't provided through this prompt, to deploy this example you must explicitly pass `--capabilities CAPABILITY_IAM` to the `sam deploy` command.
 * **Save arguments to samconfig.toml**: If set to yes, your choices will be saved to a configuration file inside the project, so that in the future you can just re-run `sam deploy` without parameters to deploy changes to your application.
@@ -57,7 +57,7 @@ You can find your API Gateway Endpoint URL in the output values displayed after 
 Build your application with the `sam build` command.
 
 ```bash
-sam-app$ sam build
+sam-sampleFunction$ sam build
 ```
 
 The SAM CLI installs dependencies defined in `HelloWorldFunction/pom.xml`, creates a deployment package, and saves it in the `.aws-sam/build` folder.
@@ -67,14 +67,14 @@ Test a single function by invoking it directly with a test event. An event is a 
 Run functions locally and invoke them with the `sam local invoke` command.
 
 ```bash
-sam-app$ sam local invoke HelloWorldFunction --event events/event.json
+sam-sampleFunction$ sam local invoke HelloWorldFunction --event events/event.json
 ```
 
 The SAM CLI can also emulate your application's API. Use the `sam local start-api` to run the API locally on port 3000.
 
 ```bash
-sam-app$ sam local start-api
-sam-app$ curl http://localhost:3000/
+sam-sampleFunction$ sam local start-api
+sam-sampleFunction$ curl http://localhost:3000/
 ```
 
 The SAM CLI reads the application template to determine the API's routes and the functions that they invoke. The `Events` property on each function's definition includes the route and method for each path.
@@ -98,7 +98,7 @@ To simplify troubleshooting, SAM CLI has a command called `sam logs`. `sam logs`
 `NOTE`: This command works for all AWS Lambda functions; not just the ones you deploy using SAM.
 
 ```bash
-sam-app$ sam logs -n HelloWorldFunction --stack-name sam-app --tail
+sam-sampleFunction$ sam logs -n HelloWorldFunction --stack-name sam-sampleFunction --tail
 ```
 
 You can find more information and examples about filtering Lambda function logs in the [SAM CLI Documentation](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-logging.html).
@@ -108,7 +108,7 @@ You can find more information and examples about filtering Lambda function logs 
 Tests are defined in the `HelloWorldFunction/src/test` folder in this project.
 
 ```bash
-sam-app$ cd HelloWorldFunction
+sam-sampleFunction$ cd HelloWorldFunction
 HelloWorldFunction$ mvn test
 ```
 
@@ -117,7 +117,7 @@ HelloWorldFunction$ mvn test
 To delete the sample application that you created, use the AWS CLI. Assuming you used your project name for the stack name, you can run the following:
 
 ```bash
-sam delete --stack-name sam-app
+sam delete --stack-name sam-sampleFunction
 ```
 
 ## Resources
@@ -128,6 +128,31 @@ Next, you can use AWS Serverless Application Repository to deploy ready to use A
 
 ## Links
 
-Github Pipeline - https://github.com/patilvinayb9/sam-app/actions
-Prod Stack - https://ap-south-1.console.aws.amazon.com/cloudformation/home?region=ap-south-1#/stacks/outputs?filteringText=&filteringStatus=active&viewNested=true&stackId=arn%3Aaws%3Acloudformation%3Aap-south-1%3A006464598930%3Astack%2Fsam-app-prod%2F403e1d80-a1b1-11ee-a790-063660f40866
+Github Pipeline - https://github.com/patilvinayb9/sam-sampleFunction/actions
+Prod Stack - https://ap-south-1.console.aws.amazon.com/cloudformation/home?region=ap-south-1#/stacks/outputs?filteringText=&filteringStatus=active&viewNested=true&stackId=arn%3Aaws%3Acloudformation%3Aap-south-1%3A006464598930%3Astack%2Fsam-sampleFunction-prod%2F403e1d80-a1b1-11ee-a790-063660f40866
 Prod URL - https://ou32pij8c0.execute-api.ap-south-1.amazonaws.com/Prod/hello/
+Localhost - localhost:8080/hello
+
+
+## Commands
+
+sam init
+sam build
+MAVEN_OPTS="-DskipTests=true" sam build
+
+sam local invoke --event events/event.json
+sam local start-api --port 8080
+
+sam deploy --guided
+
+export AWS_REGION=ap-south-1
+aws cloudformation describe-stacks --stack-name sam-app-prod
+export PROD_ENDPOINT=$(aws cloudformation describe-stacks --stack-name sam-app-prod | jq -r '.Stacks[].Outputs[].OutputValue | select(startswith("https://"))')\n\n
+watch -n 1 "curl -s $PROD_ENDPOINT | jq '.message' 2>&1 | tee -a outputs.txt"\n
+
+sam pipeline bootstrap --stage dev
+sam pipeline bootstrap --stage prod
+sam pipeline init
+
+sam validate --lint
+
