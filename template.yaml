@@ -118,7 +118,7 @@ Resources:
             Action:
               - "s3:*"
             Resource: !Sub
-              - 'arn:aws:s3:::${Bucket}/*'
+              - 'arn:aws:s3:::${Bucket}, arn:aws:s3:::${Bucket}/*'
               - Bucket: !Ref FrontendBucket              
       Bucket: !Ref FrontendBucket
 
