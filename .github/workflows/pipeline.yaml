@@ -190,7 +190,7 @@ jobs:
             --no-fail-on-empty-changeset \
             --role-arn ${TESTING_CLOUDFORMATION_EXECUTION_ROLE}
             --parameter-overrides \
-              "PipelineRole=${TESTING_PIPELINE_EXECUTION_ROLE}"
+              PipelineRole=${TESTING_PIPELINE_EXECUTION_ROLE}
 
       - name: Read frontend bucket name
         run: |
@@ -260,7 +260,7 @@ jobs:
             --no-fail-on-empty-changeset \
             --role-arn ${PROD_CLOUDFORMATION_EXECUTION_ROLE}
             --parameter-overrides \
-              "PipelineRole=${PROD_PIPELINE_EXECUTION_ROLE}"
+              PipelineRole=${PROD_PIPELINE_EXECUTION_ROLE}
 
       - name: Read frontend bucket name
         run: |
