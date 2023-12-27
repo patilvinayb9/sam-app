@@ -22,12 +22,13 @@ public class SampleFunction implements RequestHandler<APIGatewayProxyRequestEven
         Map<String, String> headers = new HashMap<>();
         headers.put("Content-Type", "application/json");
         headers.put("X-Custom-Header", "application/json");
+        headers.put("Access-Control-Allow-Origin", "*");
 
         APIGatewayProxyResponseEvent response = new APIGatewayProxyResponseEvent()
                 .withHeaders(headers);
         try {
             final String pageContents = this.getPageContents("https://checkip.amazonaws.com");
-            String output = String.format("{ \"message\": \"hello sample change\", \"location\": \"%s\" }", pageContents);
+            String output = String.format("{ \"message\": \" Now working fine on both local and prod\", \"location\": \"%s\" }", pageContents);
 
             return response
                     .withStatusCode(200)

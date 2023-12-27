@@ -16,7 +16,7 @@ public class SampleFunctionTest {
     String content = result.getBody();
     assertNotNull(content);
     assertTrue(content.contains("\"message\""));
-    assertTrue(content.contains("\"hello sample change\""));
+    assertTrue(content.contains("\" Now working fine on both local and prod\""));
     assertTrue(content.contains("\"location\""));
   }
 }

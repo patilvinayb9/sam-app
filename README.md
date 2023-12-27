@@ -126,18 +126,34 @@ See the [AWS SAM developer guide](https://docs.aws.amazon.com/serverless-applica
 
 Next, you can use AWS Serverless Application Repository to deploy ready to use Apps that go beyond hello world samples and learn how authors developed their applications: [AWS Serverless Application Repository main page](https://aws.amazon.com/serverless/serverlessrepo/)
 
+## References
+
+- https://github.com/VinodhThiagarajan1309/sam-food-truck-endpoints/blob/master/src/createOrder/.stackery-config.yaml
+
+
 ## Links
 
 Github Pipeline - https://github.com/patilvinayb9/sam-sampleFunction/actions
 Localhost - localhost:8080/hello
 
 Dev Stack Output - https://us-west-2.console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/outputs?filteringText=&filteringStatus=active&viewNested=true&stackId=arn%3Aaws%3Acloudformation%3Aus-west-2%3A006464598930%3Astack%2Fsam-app-dev%2F11da8140-a1b1-11ee-872a-02d40010caed
-Dev URL - https://napemqs469.execute-api.us-west-2.amazonaws.com/Prod/api/sample/
+Dev URL - https://d3mmvp496nn7c1.cloudfront.net/
 
 Prod Stack Output - https://ap-south-1.console.aws.amazon.com/cloudformation/home?region=ap-south-1#/stacks/outputs?filteringText=&filteringStatus=active&viewNested=true&stackId=arn%3Aaws%3Acloudformation%3Aap-south-1%3A006464598930%3Astack%2Fsam-sampleFunction-prod%2F403e1d80-a1b1-11ee-a790-063660f40866
-Prod URL - https://ou32pij8c0.execute-api.ap-south-1.amazonaws.com/Prod/api/sample/
+Prod URL - https://d39gwpo6i6vn2a.cloudfront.net/
 
 ## Commands
+
+## To start front end
+cd frontend && npm start
+--> URL - http://localhost:3000/
+
+## To start back end
+sam build
+sam local start-api --port 8080
+--> URL - http://localhost:8080/
+
+## Commands Archive
 
 sam init
 sam build
