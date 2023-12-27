@@ -4,7 +4,7 @@ function App() {
   const [greeting, setGreeting] = useState();
 
   useEffect(() => {
-    fetch('/api/hello')
+    fetch('/api/sample')
       .then(res => res.json())
       .then(greeting => setGreeting(greeting.message))
   }, [setGreeting]);
