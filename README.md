@@ -153,6 +153,12 @@ sam build
 sam local start-api --port 8080
 --> URL - http://localhost:8080/
 
+## add .env.local file in root/frontend directory
+
+```
+REACT_APP_BASE_URL=http://localhost:8080
+```
+
 ## Commands Archive
 
 sam init

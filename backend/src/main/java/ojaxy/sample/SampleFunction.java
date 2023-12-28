@@ -28,7 +28,7 @@ public class SampleFunction implements RequestHandler<APIGatewayProxyRequestEven
                 .withHeaders(headers);
         try {
             final String pageContents = this.getPageContents("https://checkip.amazonaws.com");
-            String output = String.format("{ \"message\": \" Now working fine on both local and prod\", \"location\": \"%s\" }", pageContents);
+            String output = String.format("{ \"message\": \"Prod, Dev and local should work now..\", \"location\": \"%s\" }", pageContents);
 
             return response
                     .withStatusCode(200)
