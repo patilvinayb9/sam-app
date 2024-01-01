@@ -1,0 +1,45 @@
+<div class="w3-container w3-light-grey" style="padding:50px 16px;">
+    <div><br></div>
+    <div class="w3-content" style="max-width:1100px;">
+
+        <div><br></div>
+
+        <div>
+            <div>
+                <div>
+                    <h3 class="w3-text-pink">
+                        {{es.lg.SearchById}}
+                    </h3>
+                    <div class="w3-card searchCriteriaDiv">
+                        <div class="w3-container">
+                            <div style="cursor: pointer;">
+										<span title=" Type Profile Id and Click Search ">
+											 <input type="text" ng-model="es.searchId"
+                                                    placeholder="{{es.lg.ProfileId}}..."
+                                                    class="w3-input w3-margin-top v3-input"/>
+											<br>
+											 <button class="w3-button w3-pink" type="button" ng-show="es.searchId"
+                                                     ng-click="es.wallHeader=es.lg.SearchById + ' - ' + es.searchId;es.openFullProfileById(es.searchId); es.setSelectedInternal('homeView');">{{es.lg.SearchById}}</button>
+											<button class="w3-button w3-pink" type="button" ng-hide="es.searchId"
+                                            >{{es.lg.SearchById}}</button>
+										</span>
+                                <br><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div><br></div>
+                <div>
+                    <h3 class="w3-text-pink"> {{es.lg.AdvancedSearch}} </h3>
+                </div>
+
+                <div>
+                    <h6 class="w3-opacity">*** {{es.lg.EverythingOptional}}</h6>
+                    <div ng-include="'modules/expectations/partial_expectations.html'"/>
+                </div>
+            </div>
+            <div><br></div>
+        </div>
+    </div>
+</div>
+

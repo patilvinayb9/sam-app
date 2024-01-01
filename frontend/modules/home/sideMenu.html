@@ -1,0 +1,255 @@
+<!-- Sidebar on small screens when clicking the menu icon -->
+<nav class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-light-grey w3-third" ng-show="es.showNavBar">
+
+   <span class="w3-light-grey w3-text-pink">
+
+       <!-- GUEST MENU STARTS -->
+
+      <span ng-if="!es.loggedInUser">
+
+         <a class="w3-bar-item w3-button w3-large w3-padding-16" href="javascript:void(0)"
+            ng-click="es.w3_close();"> {{es.lg.Support}} - <i class="fa fa-phone"></i> {{es.lg.CareNumber}}
+            <span class="w3-right">{{es.lg.Close}} × </span>
+         </a>
+
+
+
+         <div class="w3-topbar w3-border-white"></div>
+
+         <a class="w3-bar-item w3-button" href="#whyus" ng-click="es.w3_close();" target="_self"> &nbsp;<i
+                 class="fa fa-question w3-margin-right"></i> Why Us?
+         </a>
+
+         <a class="w3-bar-item w3-button" href="#pricing" ng-click="es.w3_close();" target="_self"> &nbsp;<i
+                 class="fa fa-inr w3-margin-right"></i> {{es.lg.MEMBERSHIP}}
+         </a>
+
+         <a class="w3-bar-item w3-button" href="#contacts" ng-click="es.w3_close();" target="_self"><i
+                 class="fa fa-phone w3-margin-right"></i> {{es.lg.CONTACTS}}
+         </a>
+
+         <div class="w3-topbar w3-border-white"></div>
+
+         <a class="w3-bar-item w3-button" ng-click="es.openPopup('SIGN_IN_POP_UP')"
+         ><i class="fa fa-sign-in w3-margin-right"></i> {{es.lg.SignIn}}
+         </a>
+
+         <a class="w3-bar-item w3-button" ng-click="es.openPopup('FORGOT_PWD_POP_UP')"
+         ><i class="fa fa-key w3-margin-right"></i> {{es.lg.Forgot}}
+         </a>
+
+
+      </span>
+
+
+       <!-- USER MENU STARTS -->
+
+      <span ng-if="es.loggedInUser">
+
+         <a class="w3-bar-item w3-button w3-pink" href="#" ng-click="es.w3_close();"
+            target="_self">
+               <div ng-show="es.loggedInProfile">
+                  <span style="text-transform: uppercase;">
+                     <h4> {{es.loggedInProfile.profileDetails.firstName}} - {{es.loggedInProfile.profileDetails.profileId}}
+                     <span ng-if="es.loggedInProfile.profileDetails.membershipPlan">
+                       - {{es.loggedInProfile.profileDetails.membershipPlan}}
+                     </span>
+                     </h4>
+                  </span>
+
+                  <h6>
+                     {{es.lg.MembershipValidTill}}: {{es.loggedInProfile.profileDetails.membershipValidTill | date:'dd-MM-yyyy'  }}
+                  </h6>
+               </div>
+
+               <div ng-show="es.profileNotCreated">
+                  <span class="w3-bar-item w3-button blink" ng-click="es.loadMenuPage('/#/page/updateProfileView');" target="_self">
+                    <h5> <i class="fa fa-user w3-margin-right"></i> Your Profile is incomplete! </h5>
+                  </span>
+               </div>
+
+
+         </a>
+
+         <div class="w3-topbar w3-border-white"></div>
+
+         <a class="w3-bar-item w3-button w3-large w3-padding-16" href="javascript:void(0)"
+            ng-click="es.w3_close();"> {{es.lg.Support}} - <i class="fa fa-phone"></i> {{es.lg.CareNumber}}
+            <span class="w3-right">{{es.lg.Close}} × </span>
+         </a>
+
+         <span ng-if="es.loggedInProfile && !es.loggedInProfile.profileDetails.membershipValid">
+
+            <div class="w3-topbar w3-border-white"></div>
+
+           <a
+                   class="w3-bar-item w3-button blink" ng-click="es.loadMenuPage('/#/page/walletsView');"
+                   target="_self">
+              <h5> <i class="fa fa-trophy w3-margin-right"></i> Click here to upgrade membership </h5>
+
+            </a>
+         </span>
+
+          <div class="w3-topbar w3-border-white"></div>
+
+
+         <h4 class="w3-margin-left">{{es.lg.ManageAccount}}  <i class="fa fa-caret-down w3-margin-left"></i></h4>
+         <span>
+
+            <a
+                    class="w3-bar-item w3-button"
+                    ng-click="es.loadMenuPage('/#/page/updateProfileView');" target="_self">
+               <i class="fa fa-user w3-margin-right"></i> {{es.lg.UpdateLong}}
+            </a>
+
+            <a
+                    class="w3-bar-item w3-button"
+                    ng-click="es.loadMenuPage('/#/page/manageAlbumView');" target="_self">
+                     <i class="fa fa-picture-o w3-margin-right"></i> {{es.lg.AlbumLong}}
+                     <span ng-show="es.loggedInProfile.profileDetails.profilePic == 'NA'">
+                     <i class="fa fa-pencil blink w3-margin-left"></i>
+                     </span>
+
+            </a>
+
+         </span>
+
+         <a class="w3-bar-item w3-button" ng-click="es.loadMenuPage('/#/page/walletsView');" target="_self">
+                     <i class="fa  fa-trophy w3-margin-right"></i> {{es.lg.Membership}}
+
+         </a>
+
+         <a class="w3-bar-item w3-button" ng-click="es.loadMenuPage('/#/page/expectationsView');" target="_self">
+                     <i class="fa fa-search w3-margin-right"></i> {{es.lg.Expectations}}
+                     <span ng-show="es.loggedInProfile.profileDetails.expectationsSet == 'N'">
+                        <i class="fa fa-pencil blink w3-margin-left"></i>
+                     </span>
+
+         </a>
+
+         <div class="w3-topbar w3-border-white"></div>
+
+         <h4 class="w3-margin-left">{{es.lg.ProfilesList}}  <i class="fa fa-caret-down w3-margin-left"></i></h4>
+
+         <a class="w3-bar-item w3-button" ng-click="es.loadMenuPage('/#/page/searchView');" target="_self">
+                     <i class="fa fa-search w3-margin-right"></i> {{es.lg.Search}}
+         </a>
+
+         <span>
+
+            <a class="w3-bar-item w3-button"
+               ng-click="es.loadMenuPage('/#/search/wall');" target="_self">
+               <i class="fa fa-users w3-margin-right"></i> {{es.lg.Expected}}
+
+            </a>
+
+         </span>
+
+         <span>
+            <a class="w3-bar-item w3-button"
+               ng-click="es.loadMenuPage('/#/search/IBuyContacts');" target="_self">
+                     <i class="fa fa-book w3-margin-right"></i> {{es.lg.BuyContacts}} ( {{es.loggedInProfile.profileDetails.usedContacts}}/{{es.loggedInProfile.profileDetails.totalContacts}} Used )
+
+            </a>
+         </span>
+
+         <span>
+
+            <a class="w3-bar-item w3-button"
+               ng-click="es.loadMenuPage('/#/search/TheyRequested');" target="_self">
+               <i class="fa fa-cloud-download w3-margin-right"></i> {{es.lg.Received}}
+
+               <span class="w3-text-yellow blink" ng-show="es.unreadNotificationsCount.Requested > 0">
+               {{es.unreadNotificationsCount.Requested}}
+               </span>
+
+            </a>
+
+            <a class="w3-bar-item w3-button"
+               ng-click="es.loadMenuPage('/#/search/IRequested');" target="_self">
+               <i class="fa fa-cloud-upload w3-margin-right"></i> {{es.lg.Sent}}
+
+            </a>
+
+         </span>
+
+
+         <span>
+
+            <a class="w3-bar-item w3-button"
+               ng-click="es.loadMenuPage('/#/search/Accepted');" target="_self">
+               <i class="fa fa-thumbs-up w3-margin-right"></i> {{es.lg.Accepted}}
+               <span class="w3-text-yellow blink" ng-show="es.unreadNotificationsCount.Accepted > 0">
+               {{es.unreadNotificationsCount.Accepted}}
+               </span>
+
+            </a>
+
+         </span>
+
+         <span>
+
+            <a class="w3-bar-item w3-button"
+               ng-click="es.loadMenuPage('/#/search/Rejected');" target="_self">
+               <i class="fa fa-thumbs-down w3-margin-right"></i> {{es.lg.Rejected}}
+               <span class="w3-text-yellow blink" ng-show="es.unreadNotificationsCount.Rejected > 0">
+               {{es.unreadNotificationsCount.Rejected}}
+
+               </span>
+
+            </a>
+
+         </span>
+
+         <span>
+
+            <a class="w3-bar-item w3-button"
+               ng-click="es.loadMenuPage('/#/search/IShortlisted');" target="_self">
+                     <i class="fa fa-star w3-margin-right"></i> {{es.lg.Shortlisted}}
+
+            </a>
+
+            <a class="w3-bar-item w3-button"
+               ng-click="es.loadMenuPage('/#/search/IRemoved');" target="_self">
+                     <i class="fa fa-trash w3-margin-right"></i> {{es.lg.Removed}}
+
+            </a>
+
+            <a class="w3-bar-item w3-button"
+               ng-click="es.loadMenuPage('/#/search/Withdrawn');" target="_self">
+                     <i class="fa fa-undo w3-margin-right"></i> {{es.lg.Withdrawn}}
+
+            </a>
+
+         </span>
+
+         <div class="w3-topbar w3-border-white"></div>
+
+         <span ng-init="es.loadWalletDetails(); ">
+
+            <a class="w3-bar-item w3-button" ng-click="es.loadMenuPage('/#/page/notificationsView');">
+                     <i class="fa fa-bell w3-margin-right"></i> {{es.lg.Notifications}}
+                     <span class="w3-text-yellow blink" ng-show="es.unreadNotificationsCount.All > 0">
+                     {{es.unreadNotificationsCount.All}}</span>
+
+            </a>
+
+         </span>
+
+         <div class="w3-topbar w3-border-white"></div>
+
+         <a class="w3-bar-item w3-button" href="logout" ng-click="es.w3_close();" target="_self"><i
+                 class="fa fa-power-off w3-margin-right"></i> {{es.lg.Logout}}</a>
+
+      </span>
+
+
+       <!-- COMMON MENU STARTS -->
+         <br><br>
+
+
+         <div class="w3-topbar w3-border-white"></div>
+
+
+      </span>
+</nav>

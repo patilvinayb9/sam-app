@@ -1,0 +1,17 @@
+<div>
+    <div ng-if="profile.profileDetails.currentCity">
+
+        <div class="leftSection" ng-show="false">{{es.lg.Expectations}} - {{es.lg.InWords}}</div>
+        <div class="rightSection">
+            <textarea
+                    id="profile_expectations"
+                    rows="4" placeholder=" {{es.lg.expectationsPlaceholder}} (Optional) "
+                    class="w3-input w3-margin-top v3-input" ng-minlength="1" maxlength="500" ng-maxlength="500"
+                    ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.expectations"
+                    title=" {{es.lg.expectationsPlaceholder}} "
+            />
+        </div>
+
+    </div>
+
+</div>

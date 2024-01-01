@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> {{es.appName}} | {{es.appTagline}} </title>
+</head>
+<body>
+<div style="padding:70px 16px" ng-init="es.initializeNotifications()">
+
+    <div>
+        <div class="w3-row-padding w3-stretch">
+            <div ng-repeat="notification in es.notifications">
+                <div class="w3-row w3-card w3-section">
+                        <span class="w3-col l2 m4 s4">
+                            <span ng-if="es.loggedInProfile.profileDetails.profilePic == 'NA'">
+                                <img src="images/loginToView.jpg" style="width:100%"/>
+                                <span ng-if="es.loggedInUser" class="w3-right w3-text-teal">
+                                    <i><h6>*** Visible only after you upload your profile Pic! &nbsp;</h6></i>
+                                </span>
+                            </span>
+                            <span ng-if="es.loggedInProfile.profileDetails.profilePic != 'NA'">
+                                <img src="{{notification.thumbnail}}"
+                                     onerror="this.src='images/proposal.png'" style="width:100%"/>
+                            </span>
+
+                        </span>
+
+                    <span class="w3-col l10 m8 s8 w3-container">
+                            <div class="w3-hide-small"><br><br></div>
+                                 {{notification.notificationText}}
+                            <br>
+                            <span class="w3-opacity">
+                                {{notification.connectionStatus}} on
+
+                                <span ng-if="notification.notificationStatus == 'Read'">
+                                    <span>
+                                        <span>{{notification.actionedOn | date :'dd-MM-yyyy'  }}</span>
+                                    </span>
+                                </span>
+                                <span ng-if="notification.notificationStatus != 'Read'">
+                                    <span>
+                                        <span><B>{{notification.raisedOn | date :'dd-MM-yyyy'  }}</B></span>
+                                    </span>
+                                </span>
+                            </span>
+
+                            <div class="w3-hide-small"><br></div>
+
+                            <div>
+                                    <button class="w3-button w3-pink"
+                                            ng-show="notification.notificationStatus != 'Read'"
+                                            title="View / Action"
+                                            ng-click="es.openFullProfileById(notification.profileOther)">
+                                        {{es.lg.ViewAction}} &nbsp; <i class="fa fa-pencil"></i>
+                                    </button>
+                                    <button class="w3-button w3-grey"
+                                            ng-show="notification.notificationStatus == 'Read'"
+                                            title="View / Action"
+                                            ng-click="es.openFullProfileById(notification.profileOther)">
+                                        {{es.lg.View}} &nbsp; <i class="fa fa-pencil"></i>
+                                    </button>
+                                    <span>
+                                        <button class="w3-button w3-pink"
+                                                ng-show="notification.notificationStatus != 'Read'"
+                                                title="View - {{notification.profileOther}} "
+                                                ng-click="es.markNotificationAsRead(notification.notificationId)">
+                                        {{es.lg.MarkRead}} <i class="fa fa-eye"></i>
+                                        </button>
+
+                                    </span>
+                            </div>
+                        </span>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+</div>
+</body>
+</html>

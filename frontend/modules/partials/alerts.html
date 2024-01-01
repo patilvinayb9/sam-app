@@ -1,0 +1,31 @@
+<div class="alertsOuterClass">
+    <div class="alertsClass">
+        <div ng-repeat="alert in es.alerts">
+            <alert type="{{alert.type}}" close="closeAlert($index)" dismiss-on-timeout="1" closeable="false">
+                <div ng-show="alert.header">{{alert.header}}</div>
+                <div ng-show="! alert.header"> {{es.lg.ErrorWhileProcessing}}</div>
+                <div>
+                    <ul>
+                        <li ng-repeat="msg in alert.messages">{{msg}}</li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li ng-repeat="error in alert.errors">{{error}}</li>
+                    </ul>
+                </div>
+                <div ng-show="alert.errorHtml">
+                    <div>
+                        <button class='btn btn-default' ng-click="alert.showErrorDetails = !alert.showErrorDetails">
+                            {{es.lg.ShowHideDetails}}
+                        </button>
+                    </div>
+                    <div ng-show="alert.showErrorDetails" style="font-style: italic; text-decoration: underline;"><br>{{ss.lg.EDetails}}
+                    </div>
+                    <div ng-show="alert.showErrorDetails"><p ng-bind-html="alert.errorHtml | unsafe"></p></div>
+                </div>
+                <div>{{alert.footer}}</div>
+            </alert>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+
+@media only screen and (min-width: 1201px) {
+
+    .profileThumbnail{
+        height-max: 250px;
+        overflow: hidden;
+        max-width: 100%;
+       /* height: 160px;*/
+    }
+
+    .formFillDiv{
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+
+}
+

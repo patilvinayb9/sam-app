@@ -1,0 +1,85 @@
+<div>
+    <h4 class="regHeader">
+        {{es.lg.Job}} <i class="fa fa-caret-down w3-margin-left"></i>
+    </h4>
+
+    <div>
+        <div class="leftSection" ng-show="false">{{es.lg.Profession}}</div>
+        <div class="rightSection">
+            <multiselect required multiple="false" class="w3-input w3-margin-top v3-input"
+                         placeholder="{{es.lg.Profession}}"
+                         ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.professionalType"
+                         title="Choose Type"
+                         options="value for value in es.professionalTypeList">
+            </multiselect>
+        </div>
+
+        <div class="leftSectionSub" ng-show="false">{{es.lg.Details}}</div>
+        <div class="rightSection">
+            <input
+                    id="profile_profdetails"
+                    ng-minlength="1" maxlength="50" ng-maxlength="50" class="w3-input w3-margin-top v3-input"
+                    type="text"
+                    ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.professionDetails"
+                    title="Job Details" sizeUnused="30"
+                    placeholder=" {{es.lg.Optional}} - {{es.lg.MoreOnProfessionDetails}}"
+            />
+        </div>
+
+        <div class="leftSection" ng-show="false">{{es.lg.Income}}</div>
+        <div class="rightSection">
+
+            <input required ng-minlength="1" maxlength="3" ng-maxlength="3" min="0" max="300"
+                   placeholder="{{es.lg.Income}} - 0 to 300 {{es.lg.Lakhs}}"
+                   class="w3-input w3-margin-top v3-input shortInput"
+                   type="number"
+                   ng-blur="es.setProfileCookie(profile);profile.profileDetails.earning=profile.profileDetails.incomeLakhs + '00000';"
+                   ng-model="profile.profileDetails.incomeLakhs"
+                   title="Income" sizeUnused="3"
+            />
+            <span ng-if="profile.profileDetails.incomeLakhs">{{es.lg.Income}}: {{profile.profileDetails.incomeLakhs }} {{es.lg.Lakhs}} / {{es.lg.Year}}</span>
+            <span ng-if="!profile.profileDetails.incomeLakhs" class="w3-text-red"> {{es.lg.Income}}: 0 {{es.lg.Lakhs}} / {{es.lg.Year}} </span>
+
+        </div>
+
+        <!--<hr><h4 class="regHeader">{{es.lg.CurrentResidence}} </div>-->
+
+        <div class="leftSection" ng-show="false">{{es.lg.Country}}</div>
+        <div class="rightSection">
+            <multiselect required multiple="false" class="w3-input w3-margin-top v3-input"
+                         ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.currentCountry"
+                         title="Select Country" placeholder="{{es.lg.Country}}"
+                         options="value for value in es.countryList">
+            </multiselect>
+        </div>
+        <div class="leftSection" ng-show="false">{{es.lg.State}}</div>
+        <div class="rightSection">
+            <span ng-if="profile.profileDetails.currentCountry == 'India'">
+                    <multiselect required multiple="false" class="w3-input w3-margin-top v3-input"
+                                 ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.currentState"
+                                 title="Select State" placeholder="{{es.lg.State}}"
+                                 options="value for value in es.stateList">
+                    </multiselect>
+            </span>
+            <span ng-if="profile.profileDetails.currentCountry != 'India'">
+                     <multiselect required multiple="false" class="w3-input w3-margin-top v3-input"
+                                  ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.currentState"
+                                  title="Select State" placeholder="{{es.lg.State}}"
+                                  options="value for value in es.stateList">
+                    </multiselect>
+            </span>
+        </div>
+        <div class="leftSection" ng-show="false">{{es.lg.City}}</div>
+        <div class="rightSection">
+
+            <input required
+                   id="profile_currentcity"
+                   ng-minlength="1" maxlength="50" ng-maxlength="50" class="w3-input w3-margin-top v3-input" type="text"
+                   ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.currentCity"
+                   placeholder="{{es.lg.City}}"
+                   sizeUnused="18"/>
+
+        </div>
+    </div>
+
+</div>

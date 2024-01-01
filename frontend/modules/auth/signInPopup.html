@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body class="bodyClass">
+<div class="edgeApp popupDiv">
+    <div>
+        <h3 class="w3-text-pink">{{es.lg.LoginForm}}</h3>
+    </div>
+    <form action="login" method="post">
+        <div class="alert alert-danger" ng-show="es.pageID == 'loginFailure'">
+            <span class="w3-text-red">{{es.lg.InvalidCredentials}} </span><br><br>
+            <button class="w3-button w3-blue" type="button"
+                    ng-click="es.closePopup('SIGN_IN_POP_UP'); es.loadMenuPage('/#/page/registerView');"
+            > {{es.lg.Register}}
+            </button>
+
+            <button class="w3-button w3-blue" type="button"
+                    ng-click="es.closePopup('SIGN_IN_POP_UP'); es.openPopup('FORGOT_PWD_POP_UP')"
+            >{{es.lg.Forgot}}
+            </button>
+        </div>
+        <div class="form-group">
+            <label class="formLabel">{{es.lg.PhoneNumber}}</label><input ng-show="false"
+                                                                         class="w3-input w3-margin-top v3-input shortInput"
+                                                                         style="border-bottom: 0px;" readonly="readonly"
+                                                                         name="username"
+                                                                         ng-model="es.signInForm.completeNumber"/>
+            <input required ng-minlength="10" maxlength="10" ng-maxlength="10" min="1111111111" max="9999999999"
+                   placeholder="~{{es.lg.PhoneNumber}}~" class="w3-input w3-margin-top v3-input"
+                   type="text" pattern="[1-9]{1}[0-9]{9}" ng-model="es.signInForm.phoneNumber"
+                   ng-blur="es.signInForm.completeNumber = '+91' + es.signInForm.phoneNumber "
+                   title="~10 Digit Phone Number~"/>
+
+        </div>
+
+
+        <div class="form-group">
+            <label class="formLabel">{{es.lg.Password}}</label>
+            <input required="required" type="password" name="password" ng-model="es.signInForm.password"
+                   class="w3-input w3-margin-top v3-input" placeholder="{{es.lg.Password}}">
+        </div>
+
+
+        <div>
+            <input type="checkbox" name="remember-me" ng-model="es.signInForm.rememberMe"
+                   ng-init="es.signInForm.rememberMe=true"
+                   placeholder="{{es.lg.RememberMe}}"> {{es.lg.RememberMe}}
+        </div>
+        <div><br></div>
+
+        <div class="form-group">
+            <input required="required" class="w3-button w3-pink" name="submit" type="submit" value="{{es.lg.Submit}}"/>
+            <button class="w3-button w3-red" type="button" ng-click="es.closePopup('SIGN_IN_POP_UP')">{{es.lg.Cancel}}
+            </button>
+            <button class="w3-button w3-blue" type="button"
+                    ng-click="es.closePopup('SIGN_IN_POP_UP');es.openPopup('FORGOT_PWD_POP_UP')">{{es.lg.Forgot}}
+            </button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
+

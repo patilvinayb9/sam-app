@@ -1,0 +1,228 @@
+<span>
+
+    <!-- Cover Image https://www.herecomestheguide.com/real-wedding/the-clubhouse-at-peacock-gap-real-wedding-->
+
+    <!-- Header with full-height image -->
+<div class="w3-container bgimg-1" id="home">
+    <div class="w3-text-white w3-center" style="padding:160px 16px">
+        <span class="w3-large"></span><br><br><br><br><br><br><br>
+        <span class="w3-xxlarge w3-hide-small">Matrimony search had never been this easy..!</span><br>
+        <span class="w3-xxlarge w3-hide-large w3-hide-medium">Matrimony search had never been this easy..!</span><br>
+        <span class="w3-large">India's #1 affordable and secure matrimony!</span>
+        <p><a target="_self"
+              class="w3-button w3-padding-large w3-large w3-margin-top w3-hover-opacity-off w3-pink w3-text-white">
+             Register Now <br>Less than 30 Rs a month!</a></p>
+
+        <br>
+
+        <div class="w3-container w3-dark-grey w3-text-black" style="padding:10px 10px;" id="searchProfiles">
+            <div>
+
+                    <form method="post" id="createUserForm" name="createUserForm" ng-submit="es.createUser(createUserForm)">
+
+                        <multiselect required class="w3-input v3-input w3-quarter w3-border" multiple="false"
+                                     title="~Your Gender~"
+                                     ng-model="es.signUpForm.gender" placeholder="Your Gender"
+                                     options="value for value in es.genderList"
+                        >
+                        </multiselect>
+
+                        <input required ng-minlength="10" maxlength="10" ng-maxlength="10" min="1111111111"
+                               max="9999999999"
+                               placeholder="10 Digit Number"
+                               class="w3-input v3-input w3-quarter w3-border"
+                               type="text" pattern="[1-9]{1}[0-9]{9}"
+                               ng-model="es.signUpForm.phoneNumber"
+                               title="10 Digit Phone Number"/>
+
+                        <input required type="password" minlength="4" maxlength="30"
+                               class="w3-input v3-input w3-quarter w3-border"
+                               ng-model="es.signUpForm.password"
+                               title="Password (Minimum 4 characters)" placeholder="{{es.lg.Password}}"/>
+
+                        <button type="submit" class="w3-button v3-input w3-pink w3-quarter"
+                                tooltip="Let's Begin!">
+                            Sign Up!
+                        </button>
+
+                    </form>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+    <!-- WHY Section -->
+<div class="w3-container w3-text-grey" style="padding:60px 16px" id="whyus">
+    <h4 class="w3-center w3-text-pink">WHY US ?</h4>
+    <p class="w3-center w3-large">Beacause we are......</p>
+    <div class="w3-row-padding" style="margin-top:64px">
+
+
+         <div class="w3-quarter w3-margin-bottom">
+            <div class="w3-center">
+                <div class="w3-container">
+                    <h4 class="w3-center w3-text-pink">So Affordable</h4>
+                    <p class="w3-opacity w3-center">Less than 30 Rs a month!</p>
+                    <p>You do not have to spend thousands like you need to on other sites, you get premium services at very affordable rates!
+                       Try us and see the difference!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="w3-quarter w3-margin-bottom">
+            <div class="w3-center">
+                <div class="w3-container">
+                    <h4 class="w3-center w3-text-pink">But Not Free</h4>
+                    <p class="w3-opacity w3-center">No fake profiles!</p>
+                    <p><B>Free membership means fake profiles who are not serious about marriage! </B>
+                        So we are NOT free but affordable! Marriage is serious affair!</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="w3-quarter w3-margin-bottom">
+            <div class="w3-center">
+                <div class="w3-container">
+                    <h4 class="w3-center w3-text-pink">Yet Very Secure</h4>
+                    <p class="w3-opacity w3-center">Encrypted Storage!</p>
+                    <p>We take at most efforts to keep your data safe and secure. All the details are stored in
+                        encrypted manner,
+                        making sure that even if data is stolen, it's not compromised!</p>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="w3-quarter w3-margin-bottom">
+            <div class="w3-center">
+                <div class="w3-container">
+                    <h4 class="w3-center w3-text-pink">With Best Privacy</h4>
+                    <p class="w3-opacity w3-center">Your contacts, Your permission!</p>
+                    <p>We let you decide who can view your contact details and connect with you. No hassle of unwanted profiles calling you.
+                    Privacy at it's Best</p>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+    <!-- About Section -->
+<div class="w3-container w3-text-grey bg1" style="padding:90px 16px" id="how">
+    <h4 class="w3-center w3-text-pink">SO, SHALL WE BEGIN?</h4>
+    <p class="w3-center w3-large">Find your partner in four easy steps</p>
+    <div class="w3-row-padding w3-center" style="margin-top:64px">
+        <div class="w3-quarter" ng-click="es.loadMenuPage('/#/page/registerView');" style="cursor:pointer">
+            <i class="fa fa-desktop w3-margin-bottom w3-jumbo w3-center w3-text-pink"></i>
+            <p class="w3-large">1. Register</p>
+            <p>Please let us know about yourself. Takes not more than five minutes. <br></p>
+
+            <!--<div class="w3-animate-top">
+                <span class="w3-xxlarge">1500+</span>
+                <br>Registrations
+            </div>-->
+            <div class="w3-hide-large">
+                <br><br><hr><br><br>
+            </div>
+        </div>
+        <div class="w3-quarter">
+            <i class="fa fa-search w3-margin-bottom w3-jumbo w3-text-pink"></i>
+            <p class="w3-large">2. Search</p>
+            <p>Login and search for the profiles you like as per your expectations.<br></p>
+
+            <!--<div class="w3-animate-top">
+                <span class="w3-xxlarge">4000+</span>
+                <br>Requests Sent
+            </div>-->
+            <div class="w3-hide-large">
+                <br><br><hr><br><br>
+            </div>
+        </div>
+        <div class="w3-quarter">
+            <i class="fa fa-phone w3-margin-bottom w3-jumbo w3-text-pink"></i>
+            <p class="w3-large">3. View Contact</p>
+            <p>View contacts of the profiles you would like to connect with.<br></p>
+
+            <!--<div class="w3-animate-top">
+                <span class="w3-xxlarge">400+</span>
+                <br>Requests Accepted
+            </div>-->
+            <div class="w3-hide-large">
+                <br><br><hr><br><br>
+            </div>
+
+        </div>
+        <div class="w3-quarter">
+            <i class="fa fa-users w3-margin-bottom w3-jumbo w3-text-pink"></i>
+            <p class="w3-large">4. Call and Connect</p>
+            <p>You can call and connect. We wish you all the very best in your search.<br></p>
+        </div>
+
+        <!--<div class="w3-animate-top">
+            <span class="w3-xxlarge">300+</span>
+            <br>Happy Customers
+        </div>-->
+
+    </div>
+</div>
+
+
+
+<div class="w3-light-grey" id="pricing">
+    <br><br><br>
+    <span ng-include="'modules/wallet/partial_plans.html'"></span>
+    <br><br><br>
+</div>
+
+    <!-- Work Section -->
+
+    <!-- Skills Section -->
+<div class="w3-container" style="padding:90px 16px" id="contacts">
+    <div class="w3-row-padding">
+        <div class="w3-col m6">
+            <p class="w3-text-pink w3-wide"><b>MarryEazy</b></p>
+            <p class="w3-opacity">Matrimony search had never been this affordable, easy and secure.......!</p>
+            <p>MarryEazy.com is an initiative and genuine effort towards making Matrimony Search Convenient, Reliable,
+                Safe and Secure.</p>
+            <p>What you feel is important to us. If you have any suggestions, queries, feedback, complaints, please feel
+                free to reach out to us.
+                We would be more than happy to serve you with those regards.
+                <br><br>
+
+            </p>
+        </div>
+        <div class="w3-col m1">
+            &nbsp;
+        </div>
+        <div class="w3-col m4 w3-card w3-padding-32 w3-round-xxlarge w3-center w3-hover-shadow">
+            <p class="w3-text-pink"><b>CONTACT US AT</b></p>
+            <p class="w3-opacity">"Happy to hear from you"</p>
+
+            <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-pink"></i>{{es.lg.CareNumber}}</p>
+            <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-pink"></i>care@marryeazy.com</p>
+            <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-pink"></i>Mumbai, Maharashtra, India</p>
+        </div>
+        <div class="w3-col m1">
+            &nbsp;
+        </div>
+    </div>
+</div>
+
+
+    <!-- Modal for full size images on click-->
+<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
+    <span class="w3-button w3-xxlarge w3-black w3-padding-large w3-display-topright" title="Close Modal Image">×</span>
+    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+        <img id="img01" class="w3-image">
+        <p id="caption" class="w3-opacity w3-large"></p>
+    </div>
+</div>
+
+
+</span>

@@ -1,0 +1,60 @@
+<div>
+    <h4 class="regHeader">
+        {{es.lg.Ethnicity}} <i class="fa fa-caret-down w3-margin-left"></i>
+    </h4>
+
+    <div>
+        <div class="leftSection" ng-show="false">{{es.lg.MotherTongue}}</div>
+        <div class="rightSection">
+            <multiselect multiple="false" required class="w3-input w3-margin-top v3-input"
+                         placeholder="{{es.lg.MotherTongue}}"
+                         ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.motherTongue"
+                         title="Mother Tongue"
+                         options="value for value in es.motherTongueList">
+            </multiselect>
+        </div>
+        <div class="leftSection" ng-show="false">{{es.lg.Religion}}</div>
+        <div class="rightSection">
+            <multiselect required multiple="false" class="w3-input w3-margin-top v3-input"
+                         placeholder="{{es.lg.Religion}}"
+                         ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.religion"
+                         title="Religion"
+                         options="db as ui for value in es.religionList">
+            </multiselect>
+        </div>
+        <div class="leftSection" ng-show="false">{{es.lg.Caste}}</div>
+        <div class="rightSection">
+            <span ng-if="profile.profileDetails.religion == 'Hindu'">
+                 <multiselect required multiple="false" class="w3-input w3-margin-top v3-input"
+                              placeholder="{{es.lg.Caste}}"
+                              ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.cast"
+                              title="Cast"
+                              options="value for value in es.casteMap['Hindu']">
+                </multiselect>
+            </span>
+            <span ng-if="profile.profileDetails.religion == 'Christian'">
+                 <multiselect required multiple="false" class="w3-input w3-margin-top v3-input"
+                              placeholder="{{es.lg.Caste}}"
+                              ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.cast"
+                              title="Cast"
+                              options="value for value in es.casteMap['Christian']">
+                </multiselect>
+            </span>
+            <span ng-if="profile.profileDetails.religion == 'Sikh'">
+                 <multiselect required multiple="false" class="w3-input w3-margin-top v3-input"
+                              placeholder="{{es.lg.Caste}}"
+                              ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.cast"
+                              title="Cast"
+                              options="value for value in es.casteMap['Sikh']">
+                </multiselect>
+            </span>
+            <span ng-if="profile.profileDetails.religion != 'Hindu' && profile.profileDetails.religion != 'Christian' && profile.profileDetails.religion != 'Sikh' ">
+                <select required class="w3-input w3-margin-top v3-input"
+                        ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.cast" title="Cast"
+                        ng-options="db as ui for (db,ui) in es.casteMap[profile.profileDetails.religion]">
+                    <option value="">{{es.lg.Caste}}</option>
+                </select>
+            </span>
+        </div>
+    </div>
+</div>

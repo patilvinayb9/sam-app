@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{es.appName}} | {{es.appTagline}} </title>
+</head>
+<body>
+
+<div class="w3-container w3-light-grey" style="padding-top:70px;">
+
+    <div class="w3-bar w3-text-grey" >
+        <div class="w3-right">
+            <button class="3-bar-item w3-button"
+                       ng-show="es.loggedInProfile.profileDetails.profilePic == 'NA' "
+                       ng-click="es.loadMenuPage('/#/page/manageAlbumView');"
+                       tooltip="Improve your chances by uploading your profile picture">
+                 Upload Pic <i class="fa fa-pencil blink"></i>
+            </button>
+
+            <button class="w3-bar-item w3-button"
+                      ng-show="es.loggedInProfile.profileDetails.expectationsSet == 'N' "
+                      ng-click="es.loadMenuPage('/#/page/expectationsView');"
+                      tooltip="Refine recommendations, block unwanted requests by letting us know your expectations">
+                Set Expectations <i class="fa fa-pencil blink"></i>
+            </button>
+
+            <button class="w3-bar-item w3-button"
+                      ng-show="es.unreadNotificationsCount.All > 0"
+                      ng-click="es.loadMenuPage('/#/page/notificationsView')">
+                <i class="fa fa-bell"></i> {{es.lg.Notifications}}
+                <span class="blink">{{es.unreadNotificationsCount.All}} &nbsp;</span>
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="w3-container w3-light-grey" ng-init="es.initializeWall()">
+    <div class="w3-row-padding">
+        <h3 class="w3-text-pink">{{es.wallHeader}}</h3><br>
+    </div>
+
+    <div>
+        <span ng-include="'modules/profile/profiles_display.html'"></span>
+    </div>
+</div>
+
+</body>
+</html>

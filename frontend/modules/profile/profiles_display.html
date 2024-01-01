@@ -1,0 +1,27 @@
+<div class="">
+    <div>
+        <span ng-repeat="profile in es.filteredProfiles track by $index">
+            <span>
+                <profile-non-secure profile="profile" es="es" buttonMode="{{es.search.type}}"/>
+            </span>
+            <br>
+        </span>
+    </div>
+
+    <div class="w3-container">
+
+        <div ng-if="es.searchedProfiles && es.searchedProfiles.length > 1" class="w3-center">
+            <pagination first-text=" << " previous-text=" < " next-text=" > " last-text=" >> "
+                        ng-model="es.currentPage"
+                        total-items="es.searchedProfiles.length"
+                        max-size="es.maxSize"
+                        boundary-links="true">
+            </pagination>
+        </div>
+
+        <span ng-if="!es.searchedProfiles">
+            {{es.lg.NoMoreProfiles}} <br><br>
+        </span>
+
+    </div>
+</div>

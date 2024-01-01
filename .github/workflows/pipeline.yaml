@@ -202,17 +202,13 @@ jobs:
               --output text \
           )" >> $GITHUB_ENV
 
-      - name: Build frontend
-        working-directory: frontend
-        run: npm install && npm run build
-
       - name: Clear frontend bucket
         run: |
           aws s3 rm s3://${{ env.frontend_bucket_name_test }} --recursive
 
       - name: Deploy frontend
         run: |
-          aws s3 cp frontend/build \
+          aws s3 cp frontend \
             s3://${{ env.frontend_bucket_name_test }} \
             --recursive
 
@@ -272,16 +268,12 @@ jobs:
               --output text \
           )" >> $GITHUB_ENV
 
-      - name: Build frontend
-        working-directory: frontend
-        run: npm install && npm run build
-
       - name: Clear frontend bucket
         run: |
           aws s3 rm s3://${{ env.frontend_bucket_name_prod }} --recursive
 
       - name: Deploy frontend
         run: |
-          aws s3 cp frontend/build \
+          aws s3 cp frontend \
             s3://${{ env.frontend_bucket_name_prod }} \
             --recursive

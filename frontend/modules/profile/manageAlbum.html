@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> {{es.appName}} | {{es.appTagline}}</title>
+</head>
+<body>
+<div class="w3-container" style="padding:50px 16px">
+    <div><br></div>
+    <div class="w3-card" ng-init="es.openMyProfile()">
+        <div><br></div>
+
+        <div class="w3-container">
+            <div ng-if="es.editProfile.profileDetails.profileImages">
+                <h4 class="w3-text-pink" ng-click="es.showAlbum(es.editProfile)">{{es.lg.Album}}</h4>
+
+                <div class="w3-row">
+                    <!-- Blog entries -->
+
+                    <span ng-repeat="imgPath in es.editProfile.profileDetails.profileImages"
+                          ng-click="es.showAlbum(es.editProfile)" style="cursor:pointer;">
+                        <div class="w3-col l3 s12">
+                            <div class="w3-card-4 w5-margin w3-white">
+                                <img src="{{imgPath.image}}" style="width:100%"
+                                     alt='Images'
+                                     style="cursor: pointer;" ng-click="es.showAlbum(es.editProfile)"
+                                     title="{{imgPath.caption}}"
+                                />
+                            </div>
+                            <br>
+                        </div>
+                    </span>
+
+                </div>
+            </div>
+
+            <div><br></div>
+
+            <h3 class="w3-text-pink">{{es.lg.AlbumLong}}</h3>
+
+            {{es.lg.BrowseImageAndUpload}}
+            <br><br>
+
+            <i class="fa fa-caret-right w3-margin-right"></i> {{es.lg.ImageUploadStep1}}<br>
+            <br>
+
+            <div class="rightSection">
+                <input type="file" file="es.uploadFile" title="~File~" size="70" accept="image/*"
+                       onchange="loadFile(event)"/>
+            </div>
+            <div><br></div>
+            <div ng-if="es.uploadFile">
+
+                <i class="fa fa-caret-right w3-margin-right"></i>{{es.lg.ImageUploadStep2}}<br>
+                <br>
+
+                <div class="w3-row">
+                    <div class="w3-col s12 l2">
+
+                        <span ng-if="es.uploadFile">
+                            <img id="output" style="width:100%"/>
+                        </span>
+
+
+                        <br>
+
+                    </div>
+                    <div class="w3-col s0 l9">
+
+                    </div>
+                </div>
+
+
+                <br>
+                <i class="fa fa-caret-right w3-margin-right"></i>{{es.lg.UploadAs}}<br>
+
+
+                <div class="rightSection" style="padding: 10px;">
+                    <div>
+                        <span ng-if="!es.inProgress.uploadImage">
+                            <button ng-click="es.uploadImage('profilePic')" class="w3-button w3-margin-bottom w3-pink">{{es.lg.ProfilePic}} </button>
+                            <br>
+                            or <button ng-click="es.uploadImage('albumImg1')"
+                                       class="w3-button w3-margin-bottom w3-yellow">{{es.lg.Image}} 1</button>
+                            <button ng-click="es.uploadImage('albumImg2')" class="w3-button w3-margin-bottom w3-yellow">{{es.lg.Image}} 2</button>
+                            <button ng-click="es.uploadImage('albumImg3')" class="w3-button w3-margin-bottom w3-yellow">{{es.lg.Image}} 3</button>
+                        </span>
+                        <span ng-if="es.inProgress.uploadImage">
+                            <button class="w3-button w3-margin-bottom w3-grey"
+                                    style="cursor: not-allowed;">{{es.lg.ProfilePic}} </button>
+                            <br>
+                            or <button class="w3-button w3-margin-bottom w3-grey" style="cursor: not-allowed;"> {{es.lg.Image}} 1</button>
+                            <button class="w3-button w3-margin-bottom w3-grey" style="cursor: not-allowed;">{{es.lg.Image}} 2</button>
+                            <button class="w3-button w3-margin-bottom w3-grey" style="cursor: not-allowed;">{{es.lg.Image}} 3</button>
+                        </span>
+                    </div>
+                </div>
+                <div><br></div>
+            </div>
+
+
+            </span>
+            </span>
+
+
+        </div>
+
+
+        <!--<div><hr class="thinHr"></div>-->
+
+        <div><br></div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<div>
+    <h4 class="regHeader">{{es.lg.LoginCredentials}} <i class="fa fa-caret-down w3-margin-left"></i></h4>
+
+    <!--
+     <div class="leftSection" ng-show="false">{{es.lg.UserName}} </div>
+      <div class="rightSection">
+        {{profile.secureDetails.cellCountry }} - {{profile.secureDetails.cell }}
+      </div>
+    -->
+
+    <div ng-if="profile.profileDetails.cast">
+
+
+        <div class="leftSection" ng-show="false">{{es.lg.Password}}</div>
+        <div class="rightSection">
+
+            <input required type="text" minlength="4" maxlength="30" class="w3-input w3-margin-top v3-input"
+                   ng-blur="es.setProfileCookie(profile);" ng-model="profile.password"
+                   title="Password (Minimum 4 characters)" placeholder="{{es.lg.Password}}"/>
+            <h6 style="color:grey">*** {{es.lg.digitPassword}}</h6>
+
+        </div>
+
+        <div class="leftSection" ng-show="false">{{es.lg.ConfirmPwd}}</div>
+        <div class="rightSection">
+
+            <input required type="password" minlength="4" maxlength="30" class="w3-input w3-margin-top v3-input"
+                   ng-blur="es.setProfileCookie(profile);" ng-model="profile.cpassword"
+                   title="Confirm Password (Minimum 4 characters)" placeholder="{{es.lg.ConfirmPwd}}"
+            />
+            <span ng-if="profile.password && profile.password != profile.cpassword"><h6 style="color:red">*** {{es.lg.pwdConfPwdNoMatch}}</h6></span>
+        </div>
+
+    </div>
+</div>
+</div>

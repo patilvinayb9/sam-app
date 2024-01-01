@@ -1,0 +1,147 @@
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+body, html {
+  height: 100%;
+  line-height: 1.8;
+}
+
+
+/* Full height image header */
+.bgimg-1 {
+  background-position: center;
+  background-size: cover;
+  background-image: url("/images/cover.jpg");
+}
+
+.bg1 {
+  background-position: center;
+  background-size: cover;
+  background-image: url("/images/bg/bg1.jpg");
+}
+
+.bg2 {
+  background-position: center;
+  background-size: cover;
+  background-image: url("/images/bg/bg2.jpg");
+}
+
+.bg3 {
+  background-position: center;
+  background-size: cover;
+  background-image: url("/images/bg/bg3.jpeg");
+}
+
+.footerBg {
+  background-position: center;
+  background-size: cover;
+  background-image: url("/images/green.png");
+}
+
+
+.w3-bar .w3-button {
+  padding: 16px;
+}
+
+
+.v3-input{
+  border-radius: 5px;
+  background: white;
+}
+
+
+.formInput{
+	width: 91%;
+    padding: 5px;
+    border: 1px #B8A38F;
+    border-bottom: dotted 1px #B8A38F;
+    margin: 2px 0px 2px;
+    color: #424242;
+    background-color: inherit;
+    /*cursor: url('/images/penCursor.jpg'), auto;*/
+}
+
+
+multiselect {
+    display:block;
+	background: white;
+}
+multiselect .btn {
+    width: 100%;
+    background-color: inherit;
+    padding: 0px 0px;
+}
+multiselect .btn.error{
+    color: red;
+}
+multiselect .dropdown-menu {
+    max-height: 300px;
+    overflow-y: auto;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 2px;
+    background: lightgrey;
+}
+multiselect .dropdown-menu > li > a {
+    padding: 3px 10px;
+    cursor:pointer;
+}
+
+.multiselectHeader{
+    background: pink;
+    width: 100%;
+}
+
+.multiselectLabel{
+    background: pink;
+    width: 100%;
+}
+
+.multiselectLabel:hover{
+    background-color: white;
+}
+
+
+input.ng-invalid {
+    border-left: 3px red solid;
+}
+
+select.ng-invalid {
+    border-left: 3px red solid;
+}
+
+
+multiselect.ng-invalid {
+    border-left: 3px red solid;
+}
+
+
+.v3-button{
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.08);
+}
+
+.blink {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  90% {
+    opacity: 0;
+  }
+}
+
+.profileThumbnail{
+    width: 100%;
+}
+
+.v3-GOLD-card{
+    box-shadow: 0 5px 5px 0 gold, 0 2px 10px 0 gold;
+}
+
+
+.v3-PLATINUM-card{
+    box-shadow: 0 5px 5px 0 gold, 0 2px 10px 0 gold;
+}
+
+.shortInput{
+    width: 50%;
+}

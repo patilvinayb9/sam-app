@@ -1,0 +1,25 @@
+<span class="">
+    <span>
+        <span ng-if="es.loggedInProfile.profileDetails.profilePic == 'NA'">
+            <img src="images/loginToView.jpg" style="width:100%" ng-click="es.showAlbum(profile)"/>
+            <span ng-if="es.loggedInUser" class="w3-right w3-text-teal">
+                <i><h6>*** Visible only after you upload your profile Pic! &nbsp;</h6></i>
+            </span>
+             <span ng-if="!es.loggedInUser" class="w3-right w3-text-teal">
+                <i><h6>*** Visible only after login! &nbsp;</h6></i>
+            </span>
+        </span>
+        <span ng-if="es.loggedInProfile.profileDetails.profilePic != 'NA'">
+
+            <span ng-if="profile.profileDetails.profilePic != 'NA'" style="cursor:pointer;"
+                  ng-click="es.showAlbum(profile)">
+                <img src="{{profile.profileDetails.profileThumbnail}}" style="width:100%"/>
+            </span>
+
+            <span ng-if="profile.profileDetails.profilePic == 'NA'">
+                <img src="images/{{profile.profileDetails.gender}}.jpg" style="width:100%"/>
+            </span>
+
+        </span>
+    </span>
+</span>

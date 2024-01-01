@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body class="bodyClass">
+<div class="edgeApp popupDiv">
+    <div class="w3-right" style="float:right">
+        <button class="w3-button" style="background: inherit;" type="button"
+                ng-click="es.closePopup('SLIDESHOW_POPUP')">
+            <i class="fa fa-times-circle-o fa-2x"></i>
+        </button>
+    </div>
+    <h3 class="w3-text-pink">
+        {{es.slideshow.title}}
+    </h3>
+    <div>
+        <carousel interval="es.slideshow.interval" no-pause="true">
+            <slide ng-repeat="slide in es.slideshow.slides">
+                <img class="slideshowImage" src="{{slide.image}}">
+                <div class="carousel-caption">
+                    <h4 style="color: white;">{{slide.caption}}</h4>
+                </div>
+            </slide>
+        </carousel>
+    </div>
+</div>
+</body>
+</html>
+

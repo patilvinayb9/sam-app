@@ -1,0 +1,29 @@
+<span>
+  <h3 class="w3-text-pink">{{es.lg.Family}}
+    <span>
+        ( {{profile.profileDetails.familyCity}},
+        {{es.stateList[profile.profileDetails.familyState]}},
+        {{es.countryList[profile.profileDetails.familyCountry]}} )
+    </span>
+	</h3>
+
+  
+    <span class="leftSection"><B>{{es.lg.FatherOccupation}}</B>:</span>
+  	<span class="rightSection">{{profile.profileDetails.fatherOccupation}}</span>
+  	
+  	<br><span class="leftSection"><B>{{es.lg.MotherOccupation}}</B>:</span>
+  	<span class="rightSection">{{profile.profileDetails.motherOccupation}}</span>
+
+ 	<br><span class="leftSection"><B>{{es.lg.Brothers}}</B>:</span>
+    <span class="rightSection">
+    		{{es.siblingsList[profile.profileDetails.brothers]}} ({{es.lg.Married}} {{profile.profileDetails.marriedBrothers}})
+	</span>
+
+ 	<br><span class="leftSection"><B>{{es.lg.Sisters}}</B>:</span>
+    <span class="rightSection">
+    		{{es.siblingsList[profile.profileDetails.sisters]}}  ({{es.lg.Married}} {{profile.profileDetails.marriedSisters}})
+	</span>
+ 
+    <br><span class="leftSection"><B>{{es.lg.Wealth}}</B>:</span>
+  	<span class="rightSection">{{profile.profileDetails.wealth}}</span>
+</span>

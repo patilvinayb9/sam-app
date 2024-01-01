@@ -1,0 +1,167 @@
+<div class="w3-card">
+    <div class="v3-{{profile.profileDetails.membershipPlan}}-card w3-row" style="border-radius: 10px;">
+        <div>
+            <span class="w3-col s12 m12 l3">
+            <span>
+                <span ng-if="es.profileNotCreated || es.loggedInProfile.profileDetails.profilePic == 'NA'">
+                    <img src="images/loginToView.jpg" class="profileThumbnail"/>
+                    <span ng-if="es.loggedInUser" class="w3-right w3-text-teal">
+                        <i><h6>*** Visible only after you upload your profile Pic! &nbsp;</h6></i>
+                    </span>
+                     <span ng-if="!es.loggedInUser" class="w3-right w3-text-teal">
+                        <i><h6>*** Visible only after login! &nbsp;</h6></i>
+                    </span>
+                </span>
+                <span ng-if="es.loggedInProfile && es.loggedInProfile.profileDetails.profilePic != 'NA'">
+
+                    <span ng-if="profile.profileDetails.profilePic != 'NA'" style="cursor:pointer;"
+                          ng-click="es.showAlbum(profile)">
+                        <div class="w3-display-container">
+                            <img src="{{profile.profileDetails.profileThumbnail}}" class="profileThumbnail"/>
+                            <div class="w3-display-topright w3-container w3-light-grey w3-text-pink w3-opacity">
+                                <i class="fa fa-camera"> &nbsp; {{profile.profileDetails.profileImages.length}} </i>
+                            </div>
+                        </div>
+                    </span>
+
+                    <span ng-if="profile.profileDetails.profilePic == 'NA'">
+                        <img src="images/{{profile.profileDetails.gender}}.jpg" class="profileThumbnail"/>
+                    </span>
+
+                </span>
+            </span>
+        </span>
+
+            <span class="w3-col s12 m12 l9 w3-container">
+
+            <span>
+                <h5 class="w3-text-pink w3-center" ng-click="es.viewFullProfile(profile)"
+                    style="text-transform: uppercase; cursor:pointer;">
+                    {{profile.profileDetails.firstName}} - {{profile.profileDetails.profileId}}
+                    <span ng-if="profile.profileDetails.membershipPlan">&nbsp;(<i class="fa fa-star w3-text-pink"></i> {{profile.profileDetails.membershipPlan}})</span>
+                </h5>
+            </span>
+
+            <span ng-click="es.viewFullProfile(profile)" style="cursor:pointer;"><B>
+                {{profile.profileDetails.birthDate | ageFilter }} {{es.lg.Years}} - {{es.maritalStatusList[profile.profileDetails.maritalStatus]}}, {{es.religionList[profile.profileDetails.religion]}}-{{es.casteMap[profile.profileDetails.religion][profile.profileDetails.cast]}}, {{es.motherTongueList[profile.profileDetails.motherTongue]}}
+            </B></span>
+
+            <br>
+            <span ng-click="es.viewFullProfile(profile)" style="color: #11AF9F; cursor:pointer;"><B>
+                {{es.heightCompleteList[profile.profileDetails.heightComplete]}}, {{profile.profileDetails.weight  }} {{es.lg.Kg}},<span
+                    class="fa-icon-header">&nbsp;<i class="fa fa-tint w3-text-red"></i></span>{{es.bloodGroupList[profile.profileDetails.bloodGroup]}}, {{es.bodyTypeList[profile.profileDetails.bodyType]}},
+                {{es.skinColorList[profile.profileDetails.skinColor]}}, {{es.dietList[profile.profileDetails.diet]}}
+
+                <span ng-if="profile.profileDetails.smoking == 'Yes'">, <span title="Smokes"><i
+                        class="fa fa-magic w3-text-red"></i></span></span>
+                <span ng-if="profile.profileDetails.smoking == 'Occasionally'">, <span title="Smokes Occasionally"><i
+                        class="fa fa-magic w3-text-yellow"></i></span></span>
+                <span ng-if="!profile.profileDetails.smoking || profile.profileDetails.smoking == 'No'">
+                        , <span title="Does Not Smoke"><i class="fa fa-magic w3-text-grey w3-opacity-max"></i></span>
+                </span>
+
+                <span ng-if="profile.profileDetails.drinking == 'Yes'">, <span title="Drinks"><i
+                        class="fa fa-glass w3-text-red"></i></span></span>
+                <span ng-if="profile.profileDetails.drinking == 'Occasionally'">, <span title="Drinks Occasionally"><i
+                        class="fa fa-glass w3-text-yellow"></i></span></span>
+                <span ng-if="!profile.profileDetails.drinking || profile.profileDetails.drinking == 'No'">
+                        , <span title="Does Not Drink"><i class="fa fa-glass w3-text-grey w3-opacity-max"></i></span>
+                </span>
+
+                <span ng-if="profile.profileDetails.physicalStatus != 'Not_Challenged'">
+                    , <span title="{{es.physicalStatusList[profile.profileDetails.physicalStatus]}}"><i
+                        class="fa fa-wheelchair w3-text-red"></i></span>
+                </span>
+                <span ng-if="profile.profileDetails.physicalStatus == 'Not_Challenged'">
+                    , <span title="{{es.physicalStatusList[profile.profileDetails.physicalStatus]}}"><i
+                        class="fa fa-wheelchair w3-text-grey w3-opacity-max"></i></span>
+                </span>
+            </B></span>
+
+            <br>
+            <span><i class="fa fa-graduation-cap fa-fw w3-margin-right1 w3-large w3-text-black"></i>
+                <span class="lableInput">{{es.degreeTypeMap[profile.profileDetails.degreeType]}}
+                    <span ng-if="profile.profileDetails.degreeDetails">
+                        , {{profile.profileDetails.degreeDetails}}
+                    </span>
+                    <span ng-if="profile.profileDetails.professionDetails"> ( {{profile.profileDetails.professionDetails}} )</span>
+                </span>
+            </span>
+
+            <br>
+            <span><i class="fa fa-money fa-fw w3-margin-right1 w3-large w3-text-black"></i>
+                {{es.professionalTypeList[profile.profileDetails.professionalType]}}, {{profile.profileDetails.currentCity}} ( {{es.stateList[profile.profileDetails.currentState]}}
+                <span ng-if="profile.profileDetails.currentCountry != 'India'"> {{es.countryList[profile.profileDetails.currentCountry]}}</span>) <span
+                        ng-if="es.loggedInUser">, {{es.lg.Income}} - {{profile.profileDetails.incomeLakhs  }} {{es.lg.Lakhs}}</span>
+            </span>
+
+            <span ng-if="profile.profileDetails.familyCity">
+                <br>
+                <span><i class="fa fa-home fa-fw w3-margin-right1 w3-large w3-text-black"></i>
+                    {{profile.profileDetails.familyCity}} ( {{es.stateList[profile.profileDetails.familyState]}}
+                    <span ng-if="profile.profileDetails.familyCountry != 'India'"> {{es.countryList[profile.profileDetails.familyCountry]}}</span>)
+                </span>
+            </span>
+
+            <span ng-if="profile.profileDetails.kundaliRas">
+                <br>
+                <span><i class="fa fa-sun-o fa-fw w3-margin-right1 w3-large w3-text-black"></i>
+                    {{profile.profileDetails.kundaliRas}}, {{profile.profileDetails.kundaliNakshatra}}, {{es.kundaliNadiList[profile.profileDetails.kundaliNadi]}}, {{es.kundaliCharanList[profile.profileDetails.kundaliCharan]}},
+                    {{es.kundaliGanList[profile.profileDetails.kundaliGan]}}, {{profile.profileDetails.kundaliGotr}}, {{profile.profileDetails.kundaliDevak}}
+                    <span ng-if="profile.profileDetails.manglikStatus">, {{es.lg.Manglik}} - {{es.manglikStatusList[profile.profileDetails.manglikStatus]}}</span>
+                </span>
+            </span>
+
+            <span ng-if="profile.profileDetails.about">
+                <br>
+                <span><i class="fa fa-user fa-fw w3-margin-right1 w3-large w3-text-black"></i>
+                    {{profile.profileDetails.about}}
+                </span>
+            </span>
+
+
+            <span ng-if="profile.profileDetails.expectations">
+                <br>
+                <span><i class="fa fa-asterisk fa-fw w3-margin-right1 w3-large w3-text-black"></i>
+                    {{profile.profileDetails.expectations}}
+                </span>
+            </span>
+
+            <span ng-if="profile.profileConnection.connectionStatus">
+                <br>
+                <span><i class="fa fa-link fa-fw w3-margin-right1 w3-large w3-text-black"></i>
+                   {{profile.profileConnection.firstNameFrom}} => {{profile.profileConnection.firstNameTo}};
+                   {{profile.profileConnection.connectionStatus}} on
+                    <span ng-if="profile.profileConnection.actionedOn">{{profile.profileConnection.actionedOn | date:'dd-MM-yyyy'  }}</span>
+                    <span ng-if="!profile.profileConnection.actionedOn">{{profile.profileConnection.requestedOn | date:'dd-MM-yyyy'  }}</span>
+
+                </span>
+            </span>
+
+            <span ng-if="profile.profileDetails.lastLoggedIn">
+                <br>
+                <span><i class="fa fa-sign-in fa-fw w3-margin-right1 w3-large w3-text-black"></i>
+                    {{es.lg.lastLogin}}<B> {{profile.profileDetails.lastLoggedIn | date:'dd-MM-yyyy'  }} </B>
+                </span>
+            </span>
+
+            <br><br>
+            <div class="w3-row">
+                <span class="w3-col m8 s6">
+                    <p><span class="w3-opacity" ng-click="es.viewFullProfile(profile)" style="cursor:pointer;">{{es.lg.More}}...</span></p>
+                </span>
+                <span class="w3-col m4 s6">
+                    <p><span class="w3-right w3-opacity">Page {{es.currentPage}}</span></p>
+                </span>
+            </div>
+
+            <div class="w3-center" style="border-top: dotted 1px lightgray;">
+                <button-panel profile="profile" es="es"/>
+            </div>
+
+        </span>
+        </div>
+
+    </div>
+</div>
+

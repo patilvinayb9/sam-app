@@ -1,0 +1,79 @@
+<span>
+
+    <h3 class="w3-text-pink">{{es.lg.Physical}}</h3>
+
+    <span class="leftSection"><B>{{es.lg.Height}}</B>:</span>
+    <span class="rightSection">{{es.heightCompleteList[profile.profileDetails.heightComplete]}} </span>
+
+    <br><span class="leftSection"><B>{{es.lg.Weight}}</B>:</span>
+    <span class="rightSection">{{profile.profileDetails.weight }} {{es.lg.Kg}} </span>
+
+    <br><span class="leftSection"><B>{{es.lg.BloodGroup}}</B>:</span>
+    <span class="rightSection">{{es.bloodGroupList[profile.profileDetails.bloodGroup]}}</span>
+
+    <br><span class="leftSection"><B>{{es.lg.BodyType}}</B>:</span>
+    <span class="rightSection">{{es.bodyTypeList[profile.profileDetails.bodyType]}}</span>
+
+    <br><span class="leftSection"><B>{{es.lg.SkinColor}}</B>:</span>
+    <span class="rightSection">{{es.skinColorList[profile.profileDetails.skinColor]}}</span>
+
+    <br><span class="leftSection"><B>{{es.lg.Challenged}}</B>:</span>
+    <span class="rightSection">{{es.physicalStatusList[profile.profileDetails.physicalStatus]}}</span>
+
+    <span><hr class="thinHr"></span>
+
+    <h3 class="w3-text-pink">{{es.lg.Lifestyle}}</h3>
+
+    <span class="leftSection"><B>{{es.lg.Diet}}</B>:</span>
+    <span class="rightSection">{{es.dietList[profile.profileDetails.diet]}}</span>
+
+    <br><span class="leftSection"><B>{{es.lg.Smoking}}</B>:</span>
+    <span class="rightSection">{{es.smokingList[profile.profileDetails.smoking]}}</span>
+
+    <br><span class="leftSection"><B>{{es.lg.Drinking}}</B>:</span>
+    <span class="rightSection">{{es.drinkingList[profile.profileDetails.drinking]}}</span>
+
+    <span><hr class="thinHr"></span>
+
+    <h3 class="w3-text-pink">{{es.lg.Ethnicity}}</h3>
+
+    <span class="leftSection"><B>{{es.lg.Religion}}</B>:</span>
+    <span class="rightSection">{{es.religionList[profile.profileDetails.religion]}}</span>
+
+    <br><span class="leftSection"><B>{{es.lg.Caste}}</B>:</span>
+    <span class="rightSection">{{es.casteMap[profile.profileDetails.religion][profile.profileDetails.cast]}}</span>
+
+    <br><span class="leftSection"><B>{{es.lg.MotherTongue}}</B>:</span>
+    <span class="rightSection">{{es.motherTongueList[profile.profileDetails.motherTongue]}}</span>
+
+    <span><hr class="thinHr"></span>
+
+    <h3 class="w3-text-pink">{{es.lg.Job}}
+    <span>
+        ( {{profile.profileDetails.currentCity}},
+        {{es.stateList[profile.profileDetails.currentState]}},
+        {{es.countryList[profile.profileDetails.currentCountry]}} )
+    </span>
+    </h3>
+    
+    <span class="leftSection"><B>{{es.lg.EducationJob}}</B>:</span>
+    <span class="rightSection">
+        {{es.degreeTypeMap[profile.profileDetails.degreeType]}}
+        <span ng-if="profile.profileDetails.degreeDetails">
+            , {{profile.profileDetails.degreeDetails}}
+        </span>
+        <span ng-if="profile.profileDetails.professionDetails">
+             ({{profile.profileDetails.professionDetails}})
+        </span>
+    </span>
+
+    <br><span class="leftSection"><B>{{es.lg.Income}}</B>:</span>
+    <span class="rightSection">{{profile.profileDetails.incomeLakhs}} {{es.lg.Lakhs}} </span>
+
+    <br><span class="leftSection"><B>{{es.lg.Profession}}</B>
+    </span>
+    <span class="rightSection">
+        {{es.professionalTypeList[profile.profileDetails.professionalType]}}
+    </span>
+
+</span>

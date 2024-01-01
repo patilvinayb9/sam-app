@@ -1,0 +1,88 @@
+<div ng-init="profile.secureDetails.cellCountry = '+91'">
+
+    <h4>
+        Contact Details <i class="fa fa-caret-down w3-margin-left"></i>
+    </h4>
+
+    <div ng-show="false">
+        <div class="leftSection" ng-show="false">{{es.lg.CountryCode}}</div>
+        <div class="rightSection">
+            <input hidden class="w3-input w3-margin-top v3-input shortInput"
+                   ng-blur="es.setProfileCookie(profile);" ng-model="profile.secureDetails.cellCountry" readonly="readonly"
+                   title="Select Country Code" placeholder="Country Code"
+            />
+        </div>
+    </div>
+
+    <div class="leftSection" ng-show="false">{{es.lg.PhoneNumber}}{{profile.secureDetails.cellCountry}}</div>
+    <div class="rightSection" ng-show="!profile.profileDetails.profileId">
+        <input required ng-minlength="10" maxlength="10" ng-maxlength="10" min="1111111111" max="9999999999"
+               placeholder="{{es.lg.PhoneNumber}}" class="w3-input w3-margin-top v3-input shortInput"
+               type="text" pattern="[1-9]{1}[0-9]{9}" ng-blur="es.setProfileCookie(profile);"
+               ng-model="profile.secureDetails.cell"
+               title="10 Digit Phone Number"/>
+    </div>
+
+    <div class="rightSection" ng-show="profile.profileDetails.profileId">
+        <i class="fa fa-phone fa-fw w3-margin-right"></i>{{profile.secureDetails.cell}} - Change? <input type="checkbox" ng-blur="es.setProfileCookie(profile);"
+                                                        ng-model="profile.updateCell" ng-value="false"/>
+    </div>
+
+    <div ng-show="profile.updateCell">
+
+        <div class="leftSectionSub" ng-show="false">New Number</div>
+        <div class="rightSection">
+            <input ng-minlength="10" maxlength="10" ng-maxlength="10" min="1111111111" max="9999999999"
+                   placeholder="New Phone Number (10 digit)" class="w3-input w3-margin-top v3-input shortInput"
+                   type="text" pattern="[1-9]{1}[0-9]{9}" ng-blur="profile.completeNumber = '+91' + profile.newCell"
+                   ng-model="profile.newCell"
+                   title="New Phone Number (10 digit)"/>
+            <button class="w3-button w3-pink" type="button"
+                    ng-click="es.sendVerificationCode(profile.completeNumber)"
+                    >{{es.lg.VerificationCodeButton}}
+            </button> {{es.verificationCodeStatus}}
+
+        </div>
+        <div class="leftSectionSub" ng-show="false">Verification Code</div>
+        <div class="rightSection">
+
+            <input ng-minlength="1" maxlength="50" ng-maxlength="50"
+               class="w3-input w3-margin-top v3-input" placeholder="Verification Code"
+               type="text" ng-model="profile.verificationCode"
+               title="~Verification Code~"/>
+
+        </div>
+
+
+    </div>
+
+    <div class="leftSection" ng-show="false">{{es.lg.PhoneNumber}} ({{es.lg.OtherCell}}):</div>
+    <div class="rightSection">
+        <input placeholder="Alternate Phone Numbers" ng-minlength="10" maxlength="100"
+               ng-maxlength="100"
+               class="w3-input w3-margin-top v3-input shortInput" type="tel" ng-blur="es.setProfileCookie(profile);"
+               ng-model="profile.secureDetails.cellOthers" title="Phone Number (Other)"/>
+    </div>
+    <br>
+    <div class="leftSection">Privacy Settings</div>
+    <div class="rightSection">
+        <select required class="w3-input w3-margin-top v3-input"
+                ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.shareContactsWith"
+                title="Marital Status"
+                ng-options="db as ui for (db,ui) in es.shareContactsWithList">
+            <option value="">Let us know who can view your contact details</option>
+        </select>
+    </div>
+
+
+    <div class="rightSection">
+        <select required class="w3-input w3-margin-top v3-input"
+                ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.allowRequestFrom"
+                title="Marital Status"
+                ng-options="db as ui for (db,ui) in es.allowRequestFromList">
+            <option value="">Let us know who can send request to you</option>
+        </select>
+    </div>
+
+
+</div>

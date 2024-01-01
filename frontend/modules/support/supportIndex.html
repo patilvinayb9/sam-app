@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> {{es.appName}} | {{es.appTagline}}</title>
+</head>
+<body class="bodyClass mobilePadding">
+<div>
+    <div>
+        <br>
+        <hr>
+        <h4 class="regHeader">{{es.lg.Feedback}} </h4>
+        <br>
+        <span ng-bind-html="es.lg.FeedbackText"></span>
+        <br><br>
+        <ul>
+            <li>
+                <i class="fa fa-envelope-o"></i> : {{es.appEAddress}}
+            </li>
+            <li>
+                <spans><i class="fa fa-whatsapp"></i></spans>
+                : {{es.appWhatsapp}}
+            </li>
+        </ul>
+        <br>
+    </div>
+
+    <div>
+        <hr class="thinHr">
+    </div>
+    <!--
+        <div>
+            <div  class="regHeader">{{es.lg.RefundRequest}} </div>
+            <br>
+            <span ng-bind-html="es.lg.RefundRequestText1"></span>
+            <span ng-bind-html="es.lg.RefundRequestText2"></span>
+            <br><br>
+            <ul>
+                <li>
+                    <i class="fa fa-envelope-o"></i> : {{es.appEAddress}}
+                </li>
+            </ul>
+            <br>
+
+        </div>
+    -->
+
+    <div><br></div>
+
+</div>
+</body>
+</html>

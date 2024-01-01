@@ -1,0 +1,84 @@
+<div class="w3-container w3-light-grey" style="padding:50px 16px;">
+    <div><br></div>
+    <div class="w3-content" style="max-width:1100px;">
+        <div>
+
+            <form method="post" name="walletRechargeForm" action="server/secured/rechargeWallet" method=POST>
+
+                <div class="w3-light-grey">
+                    <span ng-include="'modules/wallet/partial_plans.html'"></span>
+                </div>
+
+                <input type="hidden" name="hash_string" value=""/>
+                <input type="hidden" name="hash"/>
+                <input type="hidden" name="txnid"/>
+                <input ng-show="false" name="productinfo" ng-model="es.tmpProductInfo"/>
+
+                <div><br></div>
+
+            </form>
+
+
+        </div>
+    </div>
+    <div>
+        <hr class="thinHr">
+    </div>
+
+    <hr>
+    <h4 class="regHeader">{{es.lg.PaymentDetails}}</h4>
+    <h6><font color="grey"><i> *** {{es.lg.ReflectPayment}} </i></font></h6>
+    <br>
+    <div ng-init="es.loadWalletTransactions();" class="w3-third">
+        <ul class="w3-ul ">
+            <div ng-repeat="walletTransaction in es.walletTransactions">
+                <li class="w3-padding-16 w3-hover-shadow">
+                    <div>
+                        <div>
+                            <B>
+                                {{walletTransaction.createdOn | date}} &nbsp;&nbsp; - &nbsp;&nbsp;
+                                <span class="w3-text-grey w3-opacity-max">
+                                #{{walletTransaction.merchantTransactionId}}
+                            </span>
+                            </B>
+
+                            <div>
+							<span ng-show="walletTransaction.amount">
+                                <B>
+								<span style="color: green; " ng-show="walletTransaction.tranCategory=='Credit'">
+                                    <span ng-if="walletTransaction.balanceAfter">
+                                        {{walletTransaction.balanceBefore | currency : '' }} + {{walletTransaction.amount | currency : '' }} <span
+                                            class="w3-margin-right w3-margin-left"> => </span> {{walletTransaction.balanceAfter | currency : '' }}
+                                    </span>
+
+								</span>
+								<span style="color: red; " ng-show="walletTransaction.tranCategory=='Debit'">
+									<span ng-if1="walletTransaction.balanceAfter">
+                                        {{walletTransaction.balanceBefore | currency : '' }} - {{walletTransaction.amount | currency : '' }} <span
+                                            class="w3-margin-right w3-margin-left"> => </span> {{walletTransaction.balanceAfter | currency : '' }}
+                                    </span>
+                                </span>
+                                </B>
+							</span>
+                            </div>
+                        </div>
+                        <div>
+                            &nbsp; - &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{walletTransaction.productInfo}} -
+                            {{walletTransaction.status}}
+                            <span ng-hide="walletTransaction.error_Message == '' || walletTransaction.error_Message=='No Error'">
+							<br>
+							<font style="color: red">
+								&nbsp; - &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{walletTransaction.error_Message}}
+							</font>
+						</span>
+                        </div>
+                </li>
+            </div>
+    </div>
+
+    <div><br></div>
+
+    <div>
+        <hr class="thinHr">
+    </div>
+</div>

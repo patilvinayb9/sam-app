@@ -1,0 +1,14 @@
+<div style="text-align: right; width: 100%" ng-class="profile.profileConnection.connectionStatus">
+    <div ng-show="profile.profileConnection.requestedOn">
+        <br>
+        {{profile.profileConnection.requestedOn | date:'dd-MM-yyyy' }}: {{profile.profileConnection.firstNameFrom}} --&gt;
+        {{profile.profileConnection.firstNameTo}}
+        <!--<div ng-show="profile.profileConnection.actionedOn">
+            '{{profile.profileConnection.actionedOn | date:'dd-MM-yyyy'  }}: {{es.lg.ActionedOn}}'
+        </div>
+        <div ng-hide="profile.profileConnection.actionedOn">
+            '{{es.lg.NotActioned}}'
+        </div>-->
+    </div>
+</div>
+<div><br></div>

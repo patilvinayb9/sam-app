@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{es.appName}} | {{es.appTagline}} </title>
+</head>
+<body>
+<div class="bodyClass mobilePadding" ng-init="es.loadGrooms('All')">
+    <div><br></div>
+    <div>
+        <div ng-if="!es.loggedInUserId">
+            <div>
+                <div ng-if="es.searchedProfiles">
+                    <div ng-repeat="profile in es.filteredProfiles track by $index">
+                        <div class="boxDisplay {{profile.profileConnection.connectionStatus}}Bg ">
+                            <div>
+                                <profile-public profile="profile" es="es" buttonMode="{{es.search.type}}"/>
+                            </div>
+                            <div>
+                                <div class="centerAligned">
+									<span style="color:grey;">
+										{{$index + 1  }} (Page {{es.currentPage}})
+									</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div><br></div>
+                    </div>
+                    <div ng-if="es.searchedProfiles && es.searchedProfiles.length > 1" class="w3-center">
+                        <pagination first-text=" << " previous-text=" < " next-text=" > " last-text=" >> "
+                                    ng-model="es.currentPage"
+                                    total-items="es.searchedProfiles.length"
+                                    max-size="es.maxSize"
+                                    boundary-links="true">
+                        </pagination>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div ng-if="es.loggedInUserId">
+            <div>
+                <div ng-if="es.searchedProfiles">
+                    <div><br></div>
+                    <div ng-repeat="profile in es.filteredProfiles track by $index">
+                        <div class="boxDisplay {{profile.profileConnection.connectionStatus}}Bg ">
+                            <div>
+                                <profile-non-secure profile="profile" es="es" buttonMode="{{es.search.type}}"/>
+                            </div>
+                            <div>
+                                <div class="leftSection">
+                                    <div class="centerAligned">
+										<span style="color:grey;">
+											{{$index + 1  }} (Page {{es.currentPage}})
+										</span>
+                                    </div>
+                                </div>
+                                <div class="rightSection" style="font-size: medium; color:grey;">
+                                    <div class="rightAligned">
+										<span class="appLink" ng-click="es.viewFullProfile(profile)">
+											{{es.lg.More}} ...
+										</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div><br></div>
+                    </div>
+                    <div ng-if="es.searchedProfiles && es.searchedProfiles.length > 1" class="w3-center">
+                        <pagination first-text=" << " previous-text=" < " next-text=" > " last-text=" >> "
+                                    ng-model="es.currentPage"
+                                    total-items="es.searchedProfiles.length"
+                                    max-size="es.maxSize"
+                                    boundary-links="true">
+                        </pagination>
+                    </div>
+                    <div><br></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

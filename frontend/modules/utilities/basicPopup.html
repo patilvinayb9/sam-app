@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body class="bodyClass">
+<div class="edgeApp popupDiv">
+    <div class="w3-right">
+        <button class="w3-button" style="background: inherit;" type="button" ng-click="es.closePopup('BASIC_POPUP')">
+            <i class="fa fa-times-circle-o fa-2x"></i>
+        </button>
+    </div>
+    <h3 class="w3-text-pink">
+        {{es.basicPopup.title}}
+    </h3>
+    <div><br></div>
+    <div>
+        {{es.basicPopup.msg}}
+    </div>
+    <div><br></div>
+
+    <div>
+        <button class="w3-button w3-blue"
+                ng-click="es.closePopup('BASIC_POPUP')">
+            {{es.basicPopup.btnText}} &nbsp; <i class="fa fa-times"></i>
+        </button>
+    </div>
+</div>
+</body>
+</html>
+

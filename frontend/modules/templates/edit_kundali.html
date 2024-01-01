@@ -1,0 +1,88 @@
+<div>
+
+    <div ng-click="es.showKundali = !es.showKundali">
+        <h4 class="regHeader">{{es.lg.Kundali}} ({{es.lg.Optional}}):
+            <i ng-show="es.showKundali" class="fa fa-caret-down w3-margin-right"></i>
+            <i ng-show="!es.showKundali" class="fa fa-caret-right w3-margin-right">
+                <span class="w3-opacity w3-small">Click to update</span>
+            </i>
+        </h4>
+
+    </div>
+
+    <div ng-show="es.showKundali">
+
+        <div class="leftSection" ng-show="false">{{es.lg.Ras}}</div>
+        <div class="rightSection">
+            <input
+                    id="profile_ras"
+                    placeholder="{{es.lg.Ras}}" ng-minlength="1" maxlength="30" ng-maxlength="30"
+                    class="w3-input w3-margin-top v3-input" type="text" ng-blur="es.setProfileCookie(profile);"
+                    ng-model="profile.profileDetails.kundaliRas" title="Ras" title="Ras" sizeUnused="15"/>
+        </div>
+    
+        <div class="leftSection" ng-show="false">{{es.lg.Nakshatra}}</div>
+        <div class="rightSection">
+            <input
+                    id="profile_nakshatra"
+                    placeholder="{{es.lg.Nakshatra}}" ng-minlength="1" maxlength="30" ng-maxlength="30"
+                    class="w3-input w3-margin-top v3-input" type="text" ng-blur="es.setProfileCookie(profile);"
+                    ng-model="profile.profileDetails.kundaliNakshatra" title="Nakshatra" sizeUnused="20"/>
+        </div>
+    
+        <div class="leftSection" ng-show="false">{{es.lg.Nadi}}</div>
+        <div class="rightSection">
+            <select class="w3-input w3-margin-top v3-input" ng-blur="es.setProfileCookie(profile);"
+                    ng-model="profile.profileDetails.kundaliNadi" title="Nadi"
+                    ng-options="db as ui for (db,ui) in es.kundaliNadiList">
+                <option value="">{{es.lg.Nadi}}</option>
+            </select>
+        </div>
+    
+        <div class="leftSection" ng-show="false">{{es.lg.Charan}}</div>
+        <div class="rightSection">
+            <select class="w3-input w3-margin-top v3-input" ng-blur="es.setProfileCookie(profile);"
+                    ng-model="profile.profileDetails.kundaliCharan" title="Charan"
+                    ng-options="db as ui for (db,ui) in es.kundaliCharanList">
+                <option value="">{{es.lg.Charan}}</option>
+            </select>
+        </div>
+    
+        <div class="leftSection" ng-show="false">{{es.lg.Gan}}</div>
+        <div class="rightSection">
+            <select class="w3-input w3-margin-top v3-input" ng-blur="es.setProfileCookie(profile);"
+                    ng-model="profile.profileDetails.kundaliGan" title="Gan"
+                    ng-options="db as ui for (db,ui) in es.kundaliGanList">
+                <option value="">{{es.lg.Gan}}</option>
+            </select>
+        </div>
+    
+        <div class="leftSection" ng-show="false">{{es.lg.Gotra}}</div>
+        <div class="rightSection">
+            <input
+                    id="profile_gotra"
+                    placeholder="{{es.lg.Gotra}}" ng-minlength="1" maxlength="30" ng-maxlength="30"
+                    class="w3-input w3-margin-top v3-input" type="text" ng-blur="es.setProfileCookie(profile);"
+                    ng-model="profile.profileDetails.kundaliGotr" title="Gotr" sizeUnused="18"/>
+        </div>
+    
+        <div class="leftSection" ng-show="false">{{es.lg.Devak}}</div>
+        <div class="rightSection">
+            <input
+                    id="profile_devak"
+                    placeholder="{{es.lg.Devak}}" ng-minlength="1" maxlength="30" ng-maxlength="30"
+                    class="w3-input w3-margin-top v3-input" type="text" ng-blur="es.setProfileCookie(profile);"
+                    ng-model="profile.profileDetails.kundaliDevak" title="Devak" sizeUnused="18"/>
+        </div>
+    
+        <div class="leftSection" ng-show="false">{{es.lg.Manglik}}</div>
+        <div class="rightSection">
+            <select class="w3-input w3-margin-top v3-input" ng-blur="es.setProfileCookie(profile);"
+                    ng-model="profile.profileDetails.manglikStatus" title="Manglik Status"
+                    ng-options="db as ui for (db,ui) in es.manglikStatusList">
+                <option value="">{{es.lg.Manglik}}</option>
+            </select>
+        </div>
+    </div>
+
+</div>  

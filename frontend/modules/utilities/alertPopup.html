@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body class="bodyClass">
+<div class="edgeApp popupDiv {{es.alertDetails.type}}Bg">
+    <div class="w3-right">
+        <button class="w3-button" style="background: inherit;" type="button" ng-click="es.closePopup('ALERT_POPUP')">
+            <i class="fa fa-times-circle-o fa-2x"></i>
+        </button>
+    </div>
+    <h3 class="w3-text-pink">
+        {{es.lg.Information}}
+    </h3>
+    <div><br></div>
+    <div ng-if="es.alertDetails.header">
+        <b>
+            {{es.alertDetails.header}}
+        </b>
+    </div>
+    <div><br></div>
+    <div ng-repeat="message in es.alertDetails.messages">
+        <li>{{message}}</li>
+    </div>
+    <div ng-repeat="error in es.alertDetails.errors">
+        <li style="color:red;">{{error}}</li>
+    </div>
+
+    <div ng-if="es.alertDetails.footer">
+        <b>
+            {{es.alertDetails.footer}}
+        </b>
+    </div>
+    <div><br></div>
+    <div>
+        <button class="w3-button w3-blue"
+                title="Click to Close"
+                ng-click="es.closePopup('ALERT_POPUP')">
+            {{es.lg.Close}} &nbsp; <i class="fa fa-times"></i>
+        </button>
+    </div>
+
+</div>
+</body>
+</html>
+

@@ -1,0 +1,36 @@
+<div>
+    <br>
+    {{es.lg.ContactDetails}}
+    <B>
+        <span ng-if="profile.profileDetails.internalId">{{profile.profileDetails.profileId}}</span>
+        <span ng-if="! profile.profileDetails.internalId">{{es.lg.ProfileId}}</span>
+    </B>
+    <br>
+</div>
+
+<div>
+    <hr class="thinHr">
+</div>
+
+<div>
+    <div class="rightSection">
+
+        <div title="Name">
+            <i class="fa fa-user leftSectionSecure"></i>&nbsp; :
+            <span class="lableInput">{{profile.profileDetails.firstName}} {{profile.secureDetails.lastName}}</span>
+        </div>
+
+        <div title="Phone - Self">
+            <i class="fa fa-phone leftSectionSecure"></i>&nbsp; :
+            <span class="lableInput">{{profile.secureDetails.cellCountry  }} - {{profile.secureDetails.cell  }}</span>
+        </div>
+
+        <div title="Phone - Alternate">
+            <i class="fa fa-phone-square leftSectionSecure"></i>&nbsp; :
+            <span class="lableInput">{{profile.secureDetails.cellOthers }}</span>
+        </div>
+
+    </div>
+</div>
+
+<div><br></div>

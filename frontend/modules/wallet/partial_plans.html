@@ -1,0 +1,174 @@
+<!-- Pricing Section -->
+<div class="w3-container">
+    <span class="w3-center">
+        <h3 class="w3-text-pink">MEMBERSHIP</h3>
+        <p class="w3-large">Select a plan that suits your needs</p>
+
+        <span ng-if="es.loggedInProfile.profileDetails.membershipValid">
+        <p>
+            <h4 class="w3-text-pink">{{es.lg.MembershipValidTill}}: {{es.loggedInProfile.profileDetails.membershipValidTill | date:'dd-MM-yyyy'  }}</h4>
+            </p>
+        </span>
+
+        <span ng-if="es.loggedInProfile.profileDetails.membershipPlan">
+        <p>
+            <h4 class="w3-text-pink">{{es.loggedInProfile.profileDetails.membershipPlan}} MEMBER</h4>
+            </p>
+        </span>
+
+        <span ng-if="es.loggedInProfile && !es.loggedInProfile.profileDetails.membershipValid"
+              class="w3-xlarge w3-text-red blink">
+            <p> Please upgrade membership to enjoy premium features.</p>
+        </span>
+    </span>
+
+    <br>
+
+    <div class="w3-container" ng-if="es.loggedInUser">
+        <p ng-if="!es.tmpProductInfo">
+            Please select any of the plan below or enter PromoCode, and click on Proceed to Pay.
+        </p>
+
+        <span ng-if="!es.tmpProductInfo">
+            <input placeholder="Have PromoCode?" name="productinfo" ng-model="es.tmpPromoCode"
+                   ng-blur="es.tmpProductInfo = es.tmpPromoCode" class="w3-input"/>
+            <br>
+        </span>
+
+        <p ng-if="es.tmpProductInfo">Selected Plan / Promo: <B>{{es.tmpProductInfo}}</B></p>
+
+        <p>
+            <button type="submit" ng-if="es.tmpProductInfo"
+                    class="w3-button w3-pink">
+                Proceed to Pay
+            </button>
+            <button type="button" ng-click="es.tmpProductInfo=''" ng-if="es.tmpProductInfo"
+                    class="w3-button w3-blue">
+                Select Another Plan / Promo
+            </button>
+            <button type="button" ng-if="!es.tmpProductInfo"
+                    class="w3-button w3-grey">
+                Proceed to Pay
+            </button>
+        </p>
+    </div>
+
+
+    <div class="w3-row-padding" style="margin-top:10px" ng-if="!es.tmpProductInfo">
+        <br>
+        <h3>Payment Plans:</h3>
+
+        <div class="w3-third w3-section w3-center">
+            <ul class="w3-ul w3-white w3-hover-shadow">
+                <li class="w3-grey w3-text-white w3-padding-16">SILVER</li>
+                <li class="w3-padding-16">One Month Validity</li>
+                <li class="w3-padding-16">View 50 Contacts</li>
+                <li class="w3-padding-16">View Profiles</li>
+                <li class="w3-padding-16">Set Expectations</li>
+                <li class="w3-padding-16">Block Unwanted Requests</li>
+
+                <li class="w3-padding-16">
+                    <h3 class="w3-wide"><i class="fa fa-inr"></i> <span style="">30</span>
+                    </h3>
+                    <span class="w3-opacity w3-text-grey"> <i class="fa fa-inr"></i> 30 per month </span>
+                </li>
+                <li class="w3-grey w3-text-white" ng-if="es.loggedInUser">
+                    <button ng-if="es.tmpProductInfo != 'SILVER'" type="button"
+                            class="w3-button"
+                            ng-click="es.tmpProductInfo='SILVER'; es.gtag_checkout(1.0);">
+                        Select
+                    </button>
+
+                    <div ng-if="es.tmpProductInfo == 'SILVER'">
+                        <button type="submit"
+                                class="w3-button">
+                            Proceed to Pay
+                        </button>
+                    </div>
+                </li>
+                <li class="w3-grey w3-text-white" ng-if="!es.loggedInUser">
+                    <button type="button" ng-if="!es.loggedInUserId" class="w3-button"
+                            ng-click="es.openPopup('SIGN_IN_POP_UP')"> Select
+                    </button>
+                </li>
+
+            </ul>
+        </div>
+
+        <div class="w3-third w3-section w3-center">
+            <ul class="w3-ul w3-white w3-hover-shadow">
+                <li class="w3-amber w3-text-white w3-padding-16">GOLD</li>
+                <li class="w3-padding-16">Half Year Validity</li>
+                <li class="w3-padding-16">View 300 Contacts</li>
+                <li class="w3-padding-16">View Profiles</li>
+                <li class="w3-padding-16">Set Expectations</li>
+                <li class="w3-padding-16">Block Unwanted Requests</li>
+
+                <li class="w3-padding-16">
+                    <span class="w3-wide"><i class="fa fa-inr"></i> <span style="">160</span>
+                    </span>
+                    <h3 class="w3-text-amber"><B> Inaugural Price: <i class="fa fa-inr"></i> 50 </B></h3>
+                </li>
+                <li class="w3-amber w3-text-white" ng-if="es.loggedInUser">
+                    <button ng-if="es.tmpProductInfo != 'GOLD'" type="button"
+                            class="w3-button"
+                            ng-click="es.tmpProductInfo='GOLD'; es.gtag_checkout(1.0);">
+                        Select
+                    </button>
+
+                    <div ng-if="es.tmpProductInfo == 'GOLD'">
+                        <button type="submit"
+                                class="w3-button">
+                            Proceed to Pay
+                        </button>
+                    </div>
+                </li>
+                <li class="w3-amber w3-text-white" ng-if="!es.loggedInUser">
+                    <button type="button" ng-if="!es.loggedInUserId" class="w3-button"
+                            ng-click="es.openPopup('SIGN_IN_POP_UP')"> Select
+                    </button>
+                </li>
+
+            </ul>
+        </div>
+        <div class="w3-third w3-section w3-center">
+            <ul class="w3-ul w3-white w3-hover-shadow">
+                <li class="w3-pink w3-padding-16">PLATINUM</li>
+                <li class="w3-padding-16">One Year Validity</li>
+                <li class="w3-padding-16">View 600 Contacts</li>
+                <li class="w3-padding-16">View Profiles</li>
+                <li class="w3-padding-16">Set Expectations</li>
+                <li class="w3-padding-16">Block Unwanted Requests</li>
+
+                <li class="w3-padding-16">
+                    <span class="w3-wide"><i class="fa fa-inr"></i> <span style="">300</span>
+                    </span>
+                    <h3 class="w3-text-pink"><B> Inaugural Price: <i class="fa fa-inr"></i> 100 </B></h3>
+                </li>
+                <li class="w3-pink" ng-if="es.loggedInUser">
+
+                    <button ng-if="es.tmpProductInfo != 'PLATINUM'" type="button"
+                            class="w3-button"
+                            ng-click="es.tmpProductInfo='PLATINUM'; es.gtag_checkout(2.0);">
+                        Select
+                    </button>
+
+                    <span ng-if="es.tmpProductInfo == 'PLATINUM'">
+                        <button type="submit"
+                                class="w3-button">
+                            Proceed to Pay
+                        </button>
+                    </span>
+
+                </li>
+                <li class="w3-pink" ng-if="!es.loggedInUser">
+                    <button type="button" ng-if="!es.loggedInUserId" class="w3-button"
+                            ng-click="es.openPopup('SIGN_IN_POP_UP')"> Select
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <br><br>
+
+</div>

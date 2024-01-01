@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body class="bodyClass">
+<div class="edgeApp popupDiv {{es.showProfile.profileConnection.connectionStatus}}Bg">
+    <div class="w3-right">
+        <button class="w3-button" style="background: inherit;" type="button"
+                ng-click="es.closePopup('FULL_PROFILE_POPUP')">
+            <i class="fa fa-times-circle-o fa-2x"></i>
+        </button>
+    </div>
+
+    <div>
+        <view-personal profile="es.showProfile" es="es"/>
+    </div>
+    <div>
+        <hr class="thinHr">
+    </div>
+    <div>
+        <view-details profile="es.showProfile" es="es"/>
+    </div>
+    <div>
+        <hr class="thinHr">
+    </div>
+    <div>
+        <view-family profile="es.showProfile" es="es"/>
+    </div>
+    <div>
+        <hr class="thinHr">
+    </div>
+    <div>
+        <view-kundali profile="es.showProfile" es="es"/>
+    </div>
+    <div>
+        <hr class="thinHr">
+    </div>
+
+    <div class="w3-center">
+        <button-panel profile="es.showProfile" es="es"/>
+    </div>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,59 @@
+<span>
+    <span>
+        <h3 class="w3-text-pink">
+            <B>{{profile.profileDetails.firstName}} - {{profile.profileDetails.profileId}} </B>
+            <span ng-if="profile.profileDetails.membershipPlan"><br>(<i class="fa fa-star w3-text-pink"></i> {{profile.profileDetails.membershipPlan}})</span>
+
+        </h3>
+        <h4>
+            {{es.professionalTypeList[profile.profileDetails.professionalType]}}
+            <span ng-if="profile.profileDetails.professionDetails">, {{profile.profileDetails.professionDetails}} </span>
+            , {{profile.profileDetails.currentCity}}
+            <span ng-if="es.loggedInProfile">
+                <span ng-if="profile.profileDetails.incomeLakhs">, {{es.lg.Income}}: {{profile.profileDetails.incomeLakhs}} {{es.lg.Lakhs}}</span>
+            </span>
+        </h4>
+         <h4>
+             {{profile.profileDetails.birthDate | ageFilter }} {{es.lg.Years}} -
+             {{es.genderList[profile.profileDetails.gender]}} -
+             {{es.maritalStatusList[profile.profileDetails.maritalStatus]}}
+        </h4>
+    </span>
+
+    <span ng-if="es.loggedInProfile && es.loggedInProfile.profileDetails.profilePic != 'NA'">
+        <span ng-if="es.imgCount != 0">
+            <span><hr class="thinHr"></span>
+            <span>
+                <h3 class="w3-text-pink">{{es.lg.Album}}</h3>
+            </span>
+            <div style="width:100%; white-space: nowrap; overflow: scroll;">
+                <span ng-repeat="imgPath in profile.profileDetails.profileImages">
+                    <span>
+                        <img src="{{imgPath.image}}" class="w3-border" style="width:40%"
+                             alt='Images'
+                             style="cursor: pointer;" ng-click="es.showAlbum(profile)" title="Click to View Album"
+                        />
+                    </span>
+                </span>
+            </div>
+
+        </span>
+    </span>
+
+    <span>
+        <span ng-if="profile.profileDetails.about">
+            <h3 class="w3-text-pink">{{profile.profileDetails.firstName}} </h3>
+            {{profile.profileDetails.about}}
+            <br>
+        </span>
+    </span>
+
+    <span>
+        <span ng-if="profile.profileDetails.expectations">
+            <h3 class="w3-text-pink">{{es.lg.Expectations}} </h3>
+            {{profile.profileDetails.expectations}}
+            <br>
+        </span>
+    </span>
+
+</span>

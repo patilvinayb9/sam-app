@@ -1,0 +1,114 @@
+<div class="w3-container formFillDiv" style="padding:50px 16px">
+    <div><br></div>
+    <div>
+        <div><br></div>
+
+        <div class="w3-text-grey" ng-init="es.openMyProfile()">
+
+            <form method="post" id="updateForm" name="updateForm" ng-submit="es.updateMyProfile(updateForm)">
+
+                <div ng-show="es.loggedInProfile">
+                    <h3 class="w3-text-pink">{{es.lg.UpdateProfile}} - {{es.editProfile.profileDetails.profileId}} </h3>
+
+                    Link: <a href="https://{{es.appDomain}}/#/p/{{profile.profileDetails.profileId}}">
+                        https://{{es.appDomain}}/#/p/{{es.editProfile.profileDetails.profileId}}
+                        </a>
+                </div>
+
+                <div class="w3-text-dark-grey" ng-show="es.loggedInUser && es.profileNotCreated">
+                    <h3>Let us build your profile, it won't take much time, promise!</h3>
+                </div>
+                <br>
+
+                <div>
+                    <edit-personal profile="es.editProfile" es="es"/>
+                </div>
+                <br>
+
+                <div>
+                    <edit-physical profile="es.editProfile" es="es"/>
+                </div>
+                <br>
+
+                <div>
+                    <edit-professional profile="es.editProfile" es="es"/>
+                </div>
+                <div><br></div>
+
+                <div>
+                    <edit-ethnicity profile="es.editProfile" es="es"/>
+                </div>
+                <div><br></div>
+
+                <div>
+                    <edit-expectations profile="es.editProfile" es="es"/>
+                </div>
+                <div><br></div>
+
+                <div>
+                    <edit-secure profile="es.editProfile" es="es"/>
+                </div>
+                <div><br></div>
+
+                <div>
+                    <edit-family profile="es.editProfile" es="es"/>
+                </div>
+                <div><br></div>
+
+                <div>
+                    <edit-kundali profile="es.editProfile" es="es"/>
+                </div>
+                <div><br></div>
+
+                <div>
+					<span ng-show="!updateForm.$valid">
+						<span class="w3-text-pink"><h6> * {{es.lg.MandatoryInputs}}.</h6></span>
+                    </span>
+                    <span>
+						<s-button text="{{es.lg.Submit}}" inprogress="es.inProgress.updateProfile"/>
+                    </span>
+
+                </div>
+
+                <div><br><br></div>
+
+                <i class="fa fa-caret-right w3-margin-right"></i>In case, you decide to delete the account, you can
+                click on the button below.<br>
+                <br>
+                <span>
+					<button type="button" class="w3-button w3-red" ng-click="es.deleteMyProfile()">{{es.lg.DeleteMyProfile}}</button>
+				</span>
+
+                <br><br>
+
+            </form>
+        </div>
+
+        <div>
+            <hr class="thinHr">
+        </div>
+    </div>
+
+    <hr>
+    <h4 class="w3-text-pink">{{es.lg.ProfileToOthers}}</span></h4>
+    <div><br></div>
+
+    <div class="w3-card w3-section w3-margin-right">
+        <div>
+            <profile-non-secure profile="es.editProfile" es="es"/>
+        </div>
+    </div>
+
+    <div class="w3-card w3-section w3-margin-right">
+        <div class="w3-container">
+            <profile-secure profile="es.editProfile" es="es"/>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <div><br></div>
+</div>
+
+</body>
+</html>

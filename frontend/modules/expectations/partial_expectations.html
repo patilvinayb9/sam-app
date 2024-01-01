@@ -1,0 +1,338 @@
+<div>
+    <div ng-init="es.initializeExpectations();">
+        <!-- http://embed.plnkr.co/xWvfWYjaW7TThKZONkv5/ -->
+
+        <form method="post" id="expectationsForm" name="expectationsForm">
+
+            <hr>
+            <h4>{{es.lg.MaritalStatus}}</h4>
+
+            <div class="leftSection">{{es.lg.MaritalStatus}}</div>
+            <div class="rightSection">
+                <multiselect class="w3-input v3-input" multiple="true" title="~Marital Status~"
+                             ng-model="es.editExpectations.maritalStatuss"
+                             options="value for value in es.maritalStatusList"
+                >
+                </multiselect>
+            </div>
+
+            <hr>
+            <h4>{{es.lg.Physical}}</h4>
+
+            <div class="leftSection">{{es.lg.Height}}</div>
+            <div class="rightSection">
+                <select class="w3-input v3-input veryShortInput"
+                        ng-model="es.editExpectations.heightCompleteFrom" title="~From Feet~"
+                        ng-options="db as ui for (db,ui) in es.heightCompleteList">
+                </select>
+                <font> {{es.lg.To}} </font>
+
+                <select class="w3-input v3-input veryShortInput"
+                        ng-model="es.editExpectations.heightCompleteTo" title="~To Feet~"
+                        ng-options="db as ui for (db,ui) in es.heightCompleteList">
+                </select>
+
+            </div>
+
+
+            <div class="leftSection">{{es.lg.Weight}}</div>
+            <div class="rightSection">
+                <div>
+                    <input ng-minlength="2" maxlength="3" ng-maxlength="3" min="30" max="150"
+                           class="w3-input v3-input shortInput" type="number"
+                           ng-model="es.editExpectations.weightFrom"
+                           title="~Weight From~" placeholder="~{{es.lg.RangeFrom}}~"/>
+
+                    <font> {{es.lg.To}} </font>
+
+                    <input ng-minlength="2" maxlength="3" ng-maxlength="3" min="30" max="150"
+                           class="w3-input v3-input shortInput" type="number"
+                           ng-model="es.editExpectations.weightTo"
+                           title="~Weight To" placeholder="~{{es.lg.RangeTo}}~"/>
+                </div>
+            </div>
+
+            <div class="leftSection">{{es.lg.BloodGroup}}</div>
+            <div class="rightSection">
+                <multiselect class="w3-input v3-input" multiple="true" title="~Blood Group~"
+                             ng-model="es.editExpectations.bloodGroups"
+                             options="value for value in es.bloodGroupList"
+                >
+                </multiselect>
+            </div>
+
+            <div class="leftSection">{{es.lg.BodyType}}</div>
+            <div class="rightSection">
+                <multiselect class="w3-input v3-input" multiple="true" title="~Body Type~"
+                             ng-model="es.editExpectations.bodyTypes"
+                             options="value for value in es.bodyTypeList"
+                >
+                </multiselect>
+            </div>
+
+            <div class="leftSection">{{es.lg.SkinColor}}</div>
+            <div class="rightSection">
+                <multiselect class="w3-input v3-input" multiple="true" title="~Skin Color~"
+                             ng-model="es.editExpectations.skinColors"
+                             options="value for value in es.skinColorList"
+                >
+                </multiselect>
+            </div>
+
+            <div class="leftSection">{{es.lg.Challenged}}</div>
+            <div class="rightSection">
+                <multiselect class="w3-input v3-input" multiple="true" title="~Disability~"
+                             ng-model="es.editExpectations.physicalStatuss"
+                             options="value for value in es.physicalStatusList"
+                >
+                </multiselect>
+            </div>
+
+            <hr>
+            <h4>{{es.lg.BirthDate}}</h4>
+
+            <div class="leftSection"></div>
+            <div class="rightSection">
+                <div>
+                    <select
+                            class="w3-input w3-margin-top v3-input"
+                            ng-model="es.editExpectations.fromBirthYear"
+                            ng-options="db as ui for (db,ui) in es.yearList">
+                        <option value="">{{es.lg.Year}}</option>
+                    </select>
+                    <font> {{es.lg.To}} </font>
+                    <select
+                            class="w3-input w3-margin-top v3-input"
+                            ng-model="es.editExpectations.toBirthYear"
+                            ng-options="db as ui for (db,ui) in es.yearList">
+                        <option value="">{{es.lg.Year}}</option>
+                    </select>
+
+                </div>
+            </div>
+
+            <hr>
+            <h4>{{es.lg.Job}}</h4>
+
+            <div class="leftSection">{{es.lg.Education}}</div>
+            <div class="rightSection">
+                <multiselect class="w3-input v3-input" multiple="true" title="~~"
+                             ng-model="es.editExpectations.degreeTypes"
+                             options="value for value in es.degreeTypeList"
+                >
+                </multiselect>
+            </div>
+
+            <div class="leftSection">{{es.lg.Profession}}</div>
+            <div class="rightSection">
+                <multiselect class="w3-input v3-input" multiple="true" title="~Professional Type~"
+                             ng-model="es.editExpectations.professionalTypes"
+                             options="value for value in es.professionalTypeList"
+                >
+                </multiselect>
+            </div>
+
+            <div class="leftSection">{{es.lg.Income}} - {{es.lg.Minimum}} - {{es.lg.Lakhs}}</div>
+            <div class="rightSection">
+                <div>
+                    <input ng-minlength="1" maxlength="3" ng-maxlength="3" min="0" max="400" placeholder="~0 to 400~"
+                           class="w3-input v3-input shortInput" type="number"
+                           ng-model="es.editExpectations.earningFrom"
+                           title="~Per Annum Income From~" placeholder="~{{es.lg.RangeFrom}}~"/>
+
+                    <!--<font> {{es.lg.To}} </font>
+
+                    <input ng-minlength="1" maxlength="3" ng-maxlength="3" min="0" max="400" placeholder="~0 to 400~"  class="w3-input v3-input shortInput" type="number"
+                           ng-model="es.editExpectations.earningTo"
+                           title="~Per Annum Income To~" placeholder="~{{es.lg.RangeTo}}~"/> {{es.lg.Lakhs}}-->
+                </div>
+            </div>
+
+            <hr>
+            <h4>{{es.lg.CurrentResidence}}</h4>
+
+            <div class="leftSection">{{es.lg.State}}</div>
+            <div class="rightSection">
+                <multiselect class="w3-input v3-input" multiple="true" title="~{{es.lg.State}}~"
+                             ng-model="es.editExpectations.currentState"
+                             options="value for value in es.stateList"
+                >
+                </multiselect>
+            </div>
+            <div class="leftSection">{{es.lg.Country}}</div>
+            <div class="rightSection">
+                <multiselect class="w3-input v3-input" multiple="true" title="~{{es.lg.Country}}~"
+                             ng-model="es.editExpectations.currentCountry"
+                             options="value for value in es.countryList"
+                >
+                </multiselect>
+            </div>
+
+            <hr>
+            <h4>{{es.lg.FamilyResidence}}</h4>
+
+            <div class="leftSection">{{es.lg.State}}</div>
+            <div class="rightSection">
+                <multiselect class="w3-input v3-input" multiple="true" title="~{{es.lg.State}}~"
+                             ng-model="es.editExpectations.familyState"
+                             options="value for value in es.stateList"
+                >
+                </multiselect>
+            </div>
+
+            <div class="leftSection">{{es.lg.Country}}</div>
+            <div class="rightSection">
+                <multiselect class="w3-input v3-input" multiple="true" title="~{{es.lg.Country}}~"
+                             ng-model="es.editExpectations.familyCountry"
+                             options="value for value in es.countryList"
+                >
+                </multiselect>
+            </div>
+
+            <hr>
+            <h4>{{es.lg.Lifestyle}}</h4>
+
+            <div class="leftSection">{{es.lg.Diet}}</div>
+            <div class="rightSection">
+                <multiselect class="w3-input v3-input" multiple="true" title="~Diet~"
+                             ng-model="es.editExpectations.diet"
+                             options="value for value in es.dietList"
+                >
+                </multiselect>
+            </div>
+
+            <div class="leftSection">{{es.lg.Smoking}}</div>
+            <div class="rightSection">
+                <multiselect class="w3-input v3-input" multiple="true" title="~Smoking~"
+                             ng-model="es.editExpectations.smoking"
+                             options="value for value in es.smokingList"
+                >
+                </multiselect>
+            </div>
+
+            <div class="leftSection">{{es.lg.Drinking}}</div>
+            <div class="rightSection">
+                <multiselect class="w3-input v3-input" multiple="true" title="~Drinking~"
+                             ng-model="es.editExpectations.drinking"
+                             options="value for value in es.drinkingList"
+                >
+                </multiselect>
+            </div>
+
+            <hr>
+            <h4>{{es.lg.Ethnicity}}</h4>
+
+            <div class="leftSection">{{es.lg.Religion}}</div>
+            <div class="rightSection">
+                <multiselect class="w3-input v3-input" multiple="true" title="~Religion~"
+                             ng-model="es.editExpectations.religions"
+                             options="value for value in es.religionList"
+                >
+                </multiselect>
+            </div>
+
+            <div class="leftSection">{{es.lg.Caste}}</div>
+            <div class="rightSection">
+                <multiselect class="w3-input v3-input" multiple="true" title="~Cast~"
+                             ng-model="es.editExpectations.casts"
+                             options="value for value in es.casteList"
+                >
+                </multiselect>
+            </div>
+
+            <div class="leftSection">{{es.lg.MotherTongue}}</div>
+            <div class="rightSection">
+                <multiselect class="w3-input v3-input" multiple="true" title="~Mother Tongue~"
+                             ng-model="es.editExpectations.motherTongues"
+                             options="value for value in es.motherTongueList"
+                >
+                </multiselect>
+            </div>
+
+            <hr>
+            <h4>{{es.lg.Kundali}}</h4>
+
+            <div class="leftSection">{{es.lg.Manglik}}</div>
+            <div class="rightSection">
+                <multiselect class="w3-input v3-input" multiple="true" title="~Manglik~"
+                             ng-model="es.editExpectations.manglikStatuss"
+                             options="value for value in es.manglikStatusList"
+                >
+                </multiselect>
+            </div>
+
+            <div class="leftSection">{{es.lg.Nadi}}</div>
+            <div class="rightSection">
+                <multiselect class="w3-input v3-input" multiple="true" title="~Nadi~"
+                             ng-model="es.editExpectations.kundaliNadis"
+                             options="value for value in es.kundaliNadiList"
+                >
+                </multiselect>
+            </div>
+
+            <div class="leftSection">{{es.lg.Charan}}</div>
+            <div class="rightSection">
+                <multiselect class="w3-input v3-input" multiple="true" title="~Charan~"
+                             ng-model="es.editExpectations.kundaliCharans"
+                             options="value for value in es.kundaliCharanList"
+                >
+                </multiselect>
+            </div>
+
+            <div class="leftSection">{{es.lg.Gan}}</div>
+            <div class="rightSection">
+                <multiselect class="w3-input v3-input" multiple="true" title="~Gan~"
+                             ng-model="es.editExpectations.kundaliGans"
+                             options="value for value in es.kundaliGanList"
+                >
+                </multiselect>
+            </div>
+
+
+            <hr>
+            <h4>{{es.lg.ProfilePic}}</h4>
+            <div class="rightSection">
+                <input type="checkbox" ng-model="es.editExpectations.profilesWithPicOnly">
+                {{es.lg.ProfileWithPicOnly}}
+            </div>
+
+            <div><br><br></div>
+
+            <div ng-if="es.loggedInUserId">
+                <div class="profileButtonSection">
+
+                    <button type="submit" class="w3-button w3-pink" ng-click="es.setExpectations(expectationsForm)"
+                            tooltip="Update Expectations and Search">
+                        {{es.lg.ExpectationSearchText}}
+                        <span class="fa-icon-header">
+                            <i class="fa fa-cog"></i>
+                        </span>
+                    </button>
+                    <br><br>
+                    <button type="submit" class="w3-button w3-pink" ng-click="es.oneTimeSearch(expectationsForm)"
+                            tooltip="Search One Time">
+                        {{es.lg.OneTimeSearchText}}
+                        <span class="fa-icon-header">
+                            <i class="fa fa-search"></i>
+                        </span>
+                    </button>
+                    &nbsp;
+                </div>
+            </div>
+            <div ng-if="!es.loggedInUserId">
+                <div class="profileButtonSection">
+                    <button type="submit" class="w3-button w3-pink" ng-click="es.alert(es.lg.LoginToSearch);">
+                        {{es.lg.Search}}
+                        <span class="fa-icon-header">
+                            <i class="fa fa-search"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+
+            <div><br></div>
+
+        </form>
+    </div>
+</div>

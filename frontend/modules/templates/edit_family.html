@@ -1,0 +1,127 @@
+<div>
+
+    <div ng-click="es.showFamily = !es.showFamily">
+        <h4 class="regHeader">{{es.lg.Family}} ({{es.lg.Optional}}):
+            <i ng-show="es.showFamily" class="fa fa-caret-down w3-margin-right"></i>
+            <i ng-show="!es.showFamily" class="fa fa-caret-right w3-margin-right">
+                <span class="w3-opacity w3-small">Click to update</span>
+            </i>
+        </h4>
+
+    </div>
+
+    <div ng-show="es.showFamily">
+
+        <div class="leftSection" ng-show="false">{{es.lg.FatherOccupation}}</div>
+        <div class="rightSection">
+            <input
+                    id="profile_fatherOccupation"
+                    placeholder="{{es.lg.FatherOccupation}}" maxlength="100" ng-maxlength="100"
+                    class="w3-input w3-margin-top v3-input" type="text"
+                    ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.fatherOccupation"
+                    title="Father Occupation" size="65"/>
+        </div>
+
+        <div class="leftSection" ng-show="false">{{es.lg.MotherOccupation}}</div>
+        <div class="rightSection">
+            <input
+                    id="profile_motherOccupation"
+                    placeholder="{{es.lg.MotherOccupation}}" maxlength="100" ng-maxlength="100"
+                    class="w3-input w3-margin-top v3-input" type="text"
+                    ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.motherOccupation"
+                    title="Mother Occupation" size="65"/>
+        </div>
+
+        <div class="leftSection" ng-show="false">{{es.lg.Brothers}}</div>
+        <div class="rightSection">
+        </div>
+
+        <div class="leftSectionSub" ng-show="false" ng-show="false">{{es.lg.Total}}</div>
+        <div class="rightSection">
+            <select class="w3-input w3-margin-top v3-input"
+                    ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.brothers"
+                    ng-options="db as ui for (db,ui) in es.siblingsList">
+                <option value="">{{es.lg.Total}} {{es.lg.Brothers}}</option>
+            </select>
+        </div>
+        <div class="leftSectionSub" ng-show="false" ng-show="false">{{es.lg.Married}}</div>
+        <div class="rightSection">
+            <select class="w3-input w3-margin-top v3-input"
+                    ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.marriedBrothers"
+                    ng-options="db as ui for (db,ui) in es.siblingsList">
+                <option value="">{{es.lg.Married}} {{es.lg.Brothers}}</option>
+            </select>
+        </div>
+
+        <div class="leftSection" ng-show="false">{{es.lg.Sisters}}</div>
+        <div class="rightSection">
+        </div>
+        <div class="leftSectionSub" ng-show="false" ng-show="false">{{es.lg.Total}}</div>
+        <div class="rightSection">
+            <select class="w3-input w3-margin-top v3-input"
+                    ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.sisters"
+                    ng-options="db as ui for (db,ui) in es.siblingsList">
+                <option value="">{{es.lg.Total}} {{es.lg.Sisters}}</option>
+            </select>
+        </div>
+        <div class="leftSectionSub" ng-show="false" ng-show="false">{{es.lg.Married}}</div>
+        <div class="rightSection">
+            <select class="w3-input w3-margin-top v3-input"
+                    ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.marriedSisters"
+                    ng-options="db as ui for (db,ui) in es.siblingsList">
+                <option value="">{{es.lg.Married}} {{es.lg.Sisters}}</option>
+            </select>
+        </div>
+
+        <div class="leftSection" ng-show="false">{{es.lg.Wealth}}</div>
+        <div class="rightSection">
+            <input
+                    id="profile_wealth"
+                    maxlength="100" ng-maxlength="100" class="w3-input w3-margin-top v3-input" type="text"
+                    ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.wealth" title="Wealth"
+                    size="65" placeholder="{{es.lg.Wealth}}"/>
+        </div>
+
+        <h5 class="regHeader">{{es.lg.FamilyResidence}}</h5>
+
+        <div class="leftSection" ng-show="false">{{es.lg.Country}}</div>
+        <div class="rightSection">
+            <multiselect multiple="false" class="w3-input w3-margin-top v3-input"
+                         placeholder="{{es.lg.Optional}} - {{es.lg.Country}}"
+                         ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.familyCountry"
+                         title="Select Country"
+                         options="value for value in es.countryList">
+            </multiselect>
+        </div>
+        <div class="leftSection" ng-show="false">{{es.lg.State}}</div>
+        <div class="rightSection">
+            <span ng-if="profile.profileDetails.familyCountry == 'India'">
+                    <multiselect multiple="false" class="w3-input w3-margin-top v3-input"
+                                 ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.familyState"
+                                 title="Select State" placeholder="{{es.lg.Optional}} - {{es.lg.State}}"
+                                 options="value for value in es.stateList">
+                    </multiselect>
+            </span>
+            <span ng-if="profile.profileDetails.familyCountry != 'India'">
+                <multiselect multiple="false" class="w3-input w3-margin-top v3-input"
+                             ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.familyState"
+                             title="Select State" placeholder="{{es.lg.Optional}} - {{es.lg.State}}"
+                             options="value for value in es.stateList">
+                    </multiselect>
+            </span>
+        </div>
+        <div class="leftSection" ng-show="false">{{es.lg.City}}</div>
+        <div class="rightSection">
+
+            <input
+                    id="profile_familyCity"
+                    ng-minlength="1" maxlength="50" ng-maxlength="50" class="w3-input w3-margin-top v3-input" type="text"
+                    ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.familyCity"
+                    placeholder="{{es.lg.City}}"
+                    sizeUnused="18"/>
+
+        </div>
+    </div>
+
+</div>
+

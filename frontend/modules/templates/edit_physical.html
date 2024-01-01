@@ -1,0 +1,96 @@
+<div>
+    <h4 class="regHeader">
+        {{es.lg.Physical}} <i class="fa fa-caret-down w3-margin-left"></i>
+    </h4>
+
+    <div>
+        <div class="leftSection" ng-show="false">{{es.lg.Height}}</div>
+        <div class="rightSection">
+            <select required class="w3-input w3-margin-top v3-input shortInput"
+                    ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.heightComplete"
+                    title="Feet"
+                    ng-options="db as ui for (db,ui) in es.heightCompleteList">
+                <option value="">{{es.lg.Height}}</option>
+            </select>
+        </div>
+
+        <div class="leftSection" ng-show="false">{{es.lg.Weight}}</div>
+        <div class="rightSection">
+            <input required ng-minlength="2" maxlength="3" ng-maxlength="3" min="30" max="200"
+                   placeholder="{{es.lg.Weight}} - 30 to 200 {{es.lg.Kg}}"
+                   class="w3-input w3-margin-top v3-input shortInput"
+                   type="number" ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.weight"
+                   title="Weight" sizeUnused="3"/>
+        </div>
+
+        <div class="leftSection" ng-show="false">{{es.lg.BloodGroup}}</div>
+        <div class="rightSection">
+            <select required class="w3-input w3-margin-top v3-input"
+                    ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.bloodGroup"
+                    title="Blood Group"
+                    ng-options="db as ui for (db,ui) in es.bloodGroupList">
+                <option value="">{{es.lg.BloodGroup}}</option>
+            </select>
+        </div>
+
+        <div class="leftSection" ng-show="false">{{es.lg.BodyType}}</div>
+        <div class="rightSection">
+
+            <select required class="w3-input w3-margin-top v3-input"
+                    ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.bodyType" title="Body Type"
+                    ng-options="db as ui for (db,ui) in es.bodyTypeList">
+                <option value="">{{es.lg.BodyType}}</option>
+            </select>
+        </div>
+
+        <div class="leftSection" ng-show="false">{{es.lg.SkinColor}}</div>
+        <div class="rightSection">
+            <select required class="w3-input w3-margin-top v3-input"
+                    ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.skinColor"
+                    title="Skin Color"
+                    ng-options="db as ui for (db,ui) in es.skinColorList">
+                <option value="">{{es.lg.SkinColor}}</option>
+            </select>
+        </div>
+
+        <div class="leftSection" ng-show="false">{{es.lg.Challenged}}</div>
+        <div class="rightSection">
+            <select required class="w3-input w3-margin-top v3-input"
+                    ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.physicalStatus"
+                    title="Physical Status"
+                    ng-options="db as ui for (db,ui) in es.physicalStatusList">
+                <option value="">{{es.lg.Challenged}}</option>
+            </select>
+        </div>
+
+        <!--<hr><h4 class="regHeader">{{es.lg.Lifestyle}} </div>-->
+
+        <div class="leftSection" ng-show="false">{{es.lg.Diet}}</div>
+        <div class="rightSection">
+            <select required class="w3-input w3-margin-top v3-input"
+                    ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.diet" title="Diet"
+                    ng-options="db as ui for (db,ui) in es.dietList">
+                <option value="">{{es.lg.Diet}}</option>
+            </select>
+        </div>
+
+        <div class="leftSection" ng-show="false">{{es.lg.Smoking}}</div>
+        <div class="rightSection">
+            <select required class="w3-input w3-margin-top v3-input"
+                    ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.smoking" title="Smoking"
+                    ng-options="db as ui for (db,ui) in es.smokingList">
+                <option value="">{{es.lg.Smoking}}</option>
+            </select>
+        </div>
+
+        <div class="leftSection" ng-show="false">{{es.lg.Drinking}}</div>
+        <div class="rightSection">
+            <select required class="w3-input w3-margin-top v3-input"
+                    ng-blur="es.setProfileCookie(profile);" ng-model="profile.profileDetails.drinking" title="Drinking"
+                    ng-options="db as ui for (db,ui) in es.drinkingList">
+                <option value="">{{es.lg.Drinking}}</option>
+            </select>
+        </div>
+    </div>
+</div>
+

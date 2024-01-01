@@ -1,0 +1,39 @@
+
+@media only screen and (max-width: 1200px) {
+
+    .bgimg-1 {
+      background-position: center;
+      background-size: cover;
+      background-image: url("/images/cover.jpg");
+    }
+
+
+    .v3-input{
+        margin:2px;
+    }
+
+    input.ng-valid:hover {
+        border: 2px green solid;
+    }
+
+    select.ng-valid:hover {
+        border: 2px green solid;
+    }
+
+    multiselect.ng-valid:hover {
+        border: 2px green solid;
+    }
+
+    input.ng-invalid:hover {
+        border: 2px red solid;
+    }
+
+    select.ng-invalid:hover {
+        border: 2px red solid;
+    }
+
+    multiselect.ng-invalid:hover {
+        border: 2px red solid;
+    }
+
+}

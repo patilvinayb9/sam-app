@@ -1,0 +1,54 @@
+<div class="dropdown">
+    <button type="button" class="btn" ng-click="toggleSelect()" ng-disabled="disabled" ng-class="{'error': !valid()}">
+    <span ng-if="header != 'Select'">
+        <span class="pull-left">{{header}}</span>
+    </span>
+        <span ng-if="header == 'Select'">
+        <span class="pull-left w3-text-grey">{{placeholder}}</span>
+    </span>
+        <span class="caret pull-right"></span>
+    </button>
+    <ul class="dropdown-menu">
+        <li>
+            <input style="width:100%;" class="input-block-level" type="text" ng-model="searchText" autofocus="autofocus"
+                   placeholder="{{es.lg.MultiselectFilter}}"/>
+        </li>
+        <li ng-show="multiple">
+            <button type="button" class="btn-link btn-small" ng-click="checkAll()"><i class="icon-ok"></i>
+                {{es.lg.CheckAll}}
+            </button>
+            |
+            <button type="button" class="btn-link btn-small" ng-click="uncheckAll()"><i class="icon-remove"></i>
+                {{es.lg.UncheckAll}}
+            </button>
+            |
+            <button type="button" class="btn-link btn-small" ng-click="toggleSelect()"><i class="icon-remove"></i>
+                {{es.lg.Done}}
+            </button>
+        </li>
+        <li ng-repeat="i in items | filter: searchText ">
+            <div>
+                <i ng-class="{'icon-ok': i.checked, 'icon-empty': !i.checked}"></i>
+                <div class="multiselectHeader">
+                <span ng-if="i.label.indexOf('~~~') != -1">
+                    {{i.label}}
+                </span>
+                </div>
+                <div class="multiselectLabel" ng-click="select(i); focus()">
+                <span ng-if="i.label.indexOf('~~~') == -1">
+                    <span>
+                        <span class="fa-icon-header Accepted w3-margin" ng-show="i.checked">
+                            <i class="fa fa-check-square"></i>
+                        </span>
+                        <span class="fa-icon-header Accepted w3-margin" ng-show="!i.checked">
+                            <i class="fa fa-square-o"></i>
+                        </span>
+                        {{i.label}}
+                    </span>
+                </span>
+                </div>
+            </div>
+
+        </li>
+    </ul>
+</div>

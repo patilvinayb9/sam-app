@@ -1,0 +1,45 @@
+<!-- Navbar (sit on top) -->
+<div class="w3-top w3-text-grey w3-white">
+    <div class="w3-bar" id="myNavbar">
+        <span class="w3-bar-item w3-button">
+               <a class="w3-wide w3-text-pink" href="#home" target="_self">
+
+                   <B>MarryEazy
+                        <span ng-repeat="x in [].constructor(es.ajaxCount)">
+                             <i class="fa fa-spinner w3-spin w3-large"></i>
+                         </span>
+                   </B>
+               </a>
+        </span>
+
+        <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+        <a class="w3-bar-item w3-button w3-right w3-text-pink" ng-click="es.w3_open();">
+            <i class="fa fa-bars"></i>
+        </a>
+
+        <div class="w3-right">
+
+            <!-- <span class="w3-bar-item w3-button" ng-click="es.setLanguage('en');"> EN </span>
+             <span class="w3-bar-item w3-button" ng-click="es.setLanguage('mr');"> म </span>
+             -->
+
+            <a ng-if="!es.loggedInUser" class="w3-bar-item w3-button w3-max-opacity" href="#whyus"
+               target="_self">
+                Why Us?
+            </a>
+
+            <button ng-if="!es.loggedInUser" class="w3-bar-item w3-button w3-max-opacity"
+                    ng-click="es.openPopup('SIGN_IN_POP_UP')">
+                Sign In
+            </button>
+            <a ng-if="es.loggedInUser" class="w3-bar-item w3-button" href="logout" target="_self">
+                <i class="fa fa-power-off"></i> </a>
+
+            </span>
+
+        </div>
+
+
+    </div>
+</div>
+

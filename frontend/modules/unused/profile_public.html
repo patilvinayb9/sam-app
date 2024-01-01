@@ -1,0 +1,125 @@
+<div class="leftSectionPic">
+    <div class="centerAligned">
+        <div class="appLink">
+            <B>{{profile.profileDetails.profileId}}</B>
+        </div>
+        <br>
+        <div style="cursor:pointer">
+            <img src="images/loginToView.png" style="width:100%" ng-click="es.openPopup('SIGN_IN_POP_UP')"/>
+        </div>
+        <div><br></div>
+    </div>
+</div>
+<div class="rightSection" style="font-size: medium;">
+	<span class="appLink">
+		<font style="font-size: large;">
+			<B>
+				{{profile.profileDetails.birthDate | ageFilter }} {{es.lg.Years}} - {{es.maritalStatusList[profile.profileDetails.maritalStatus]}}, {{es.religionList[profile.profileDetails.religion]}}-{{es.casteMap[profile.profileDetails.religion][profile.profileDetails.cast]}}, {{es.motherTongueList[profile.profileDetails.motherTongue]}}
+				<br>
+				{{es.professionalTypeList[profile.profileDetails.professionalType]}}, {{profile.profileDetails.currentCity}} ( {{es.stateList[profile.profileDetails.currentState]}}
+				<span ng-if="profile.profileDetails.currentCountry != 'India'"> {{es.countryList[profile.profileDetails.currentCountry]}}</span>)
+
+			</B>
+		</font>
+	</span>
+    <br>
+    <span style="color: #11AF9F;">
+	<B>
+
+		{{es.heightCompleteList[profile.profileDetails.heightComplete]}}, {{profile.profileDetails.weight  }} {{es.lg.Kg}},<span
+            class="fa-icon-header" style="color: red;">&nbsp;<i class="fa fa-tint"></i></span>{{es.bloodGroupList[profile.profileDetails.bloodGroup]}}, {{es.bodyTypeList[profile.profileDetails.bodyType]}},
+		{{es.skinColorList[profile.profileDetails.skinColor]}}, {{es.dietList[profile.profileDetails.diet]}}
+
+		<span ng-if="profile.profileDetails.smoking == 'Yes'">, <span style="color:red; cursor:pointer;" title="Smokes"><i
+                class="fa fa-magic"></i></span></span>
+		<span ng-if="profile.profileDetails.smoking == 'Occasionally'">, <span style="color:orange"
+                                                                               title="Smokes Occasionally"><i
+                class="fa fa-magic"></i></span></span>
+		<span ng-if="!profile.profileDetails.smoking || profile.profileDetails.smoking == 'No'">
+			, <span style="color:lightgrey" title="Does Not Smoke"><i class="fa fa-magic"></i></span>
+		</span>
+
+		<span ng-if="profile.profileDetails.drinking == 'Yes'">, <span style="color:red; cursor:pointer;"
+                                                                       title="Drinks"><i class="fa fa-glass"></i></span></span>
+		<span ng-if="profile.profileDetails.drinking == 'Occasionally'">, <span style="color:orange"
+                                                                                title="Drinks Occasionally"><i
+                class="fa fa-glass"></i></span></span>
+		<span ng-if="!profile.profileDetails.drinking || profile.profileDetails.drinking == 'No'">
+			, <span style="color:lightgrey" title="Does Not Drink"><i class="fa fa-glass"></i></span>
+		</span>
+
+		<span ng-if="profile.profileDetails.physicalStatus != 'Not_Challenged'">, <span
+                style="color:red; cursor:pointer;"
+                title="{{es.physicalStatusList[profile.profileDetails.physicalStatus]}}"><i
+                class="fa fa-wheelchair"></i></span></span>
+		<span ng-if="profile.profileDetails.physicalStatus == 'Not_Challenged'">, <span style="color:lightgrey"
+                                                                                        title="{{es.physicalStatusList[profile.profileDetails.physicalStatus]}}"><i
+                class="fa fa-wheelchair"></i></span></span>
+
+	</B>
+	</span>
+
+    <br>
+    <span class="fa-icon-header" style="color: magenta1;">
+		<i class="fa fa-graduation-cap"></i>
+	</span>
+    <span class="lableInput">{{es.degreeTypeMap[profile.profileDetails.degreeType]}}
+		<span ng-if="profile.profileDetails.degreeDetails">
+            , {{profile.profileDetails.degreeDetails}}
+        </span>
+        <span ng-if="profile.profileDetails.professionDetails"> ( {{profile.profileDetails.professionDetails}} )</span>
+    </span>
+
+    <br>
+    <span class="fa-icon-header" style="color: magenta1;">
+		&nbsp;<i class="fa fa-home"></i>
+	</span>
+    &nbsp;{{es.lg.Family}} - <span class="lableInput">{{profile.profileDetails.familyCity}} ( {{es.stateList[profile.profileDetails.familyState]}}
+	<span ng-if="profile.profileDetails.familyCountry != 'India'"> {{es.countryList[profile.profileDetails.familyCountry]}}</span>)
+	</span>
+    <span ng-if="profile.profileDetails.kundaliRas">
+		<br>
+		<span class="fa-icon-header" style="color: magenta1;">
+			&nbsp;<i class="fa fa-sun-o"></i>
+		</span>
+		<span class="lableInput"> {{profile.profileDetails.kundaliRas}}, {{profile.profileDetails.kundaliNakshatra}}, {{es.kundaliNadiList[profile.profileDetails.kundaliNadi]}}, {{es.kundaliCharanList[profile.profileDetails.kundaliCharan]}},
+		{{es.kundaliGanList[profile.profileDetails.kundaliGan]}}, {{profile.profileDetails.kundaliGotr}}, {{profile.profileDetails.kundaliDevak}}
+			<span ng-if="profile.profileDetails.manglikStatus">, {{es.lg.Manglik}} - {{es.manglikStatusList[profile.profileDetails.manglikStatus]}}</span>
+		</span>
+	</span>
+
+
+    <span ng-if="profile.profileDetails.about">
+
+		<br>
+		<span class="fa-icon-header" style="color: magenta1;">
+			&nbsp;<i class="fa fa-user"></i>
+		</span>
+		&nbsp;
+		<span class="lableInput">
+			{{profile.profileDetails.about}}
+		</span>
+	</span>
+
+
+    <span ng-if="profile.profileDetails.expectations">
+
+		<br>
+		<span class="fa-icon-header" style="color: magenta1;">
+			&nbsp;<i class="fa fa-asterisk"></i>
+		</span>
+		&nbsp;
+		<span class="lableInput">
+			{{profile.profileDetails.expectations}}
+		</span>
+	</span>
+
+</div>
+
+<hr class="thinHr">
+<div class="profileButtonSection centerAligned">
+    <button class="w3-button w3-pink"
+            ng-click="es.setSelectedView('registerView')">
+        {{es.lg.RegisterToSeeMoreProfiles}}
+    </button>
+</div>

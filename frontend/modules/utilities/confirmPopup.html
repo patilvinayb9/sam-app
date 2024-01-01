@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body class="bodyClass">
+<div class="edgeApp popupDiv">
+    <div class="w3-right">
+        <button class="w3-button" style="background: inherit;" type="button" ng-click="es.closePopup('CONFIRM_POPUP')">
+            <i class="fa fa-times-circle-o fa-2x"></i>
+        </button>
+    </div>
+    <h3 class="w3-text-pink">
+        {{es.lg.Confirmation}}
+    </h3>
+    <div><br></div>
+    <div>
+        {{es.confirmPopup.msg}}
+    </div>
+    <div><br></div>
+    <div>
+        <button class="w3-button w3-pink"
+                title="Confirm to Proceed"
+                ng-click="es.confirmPopup.okFunction(); es.closePopup('CONFIRM_POPUP')">
+            {{es.lg.Yes}} &nbsp; <i class="fa fa-check"></i>
+        </button>
+        <button class="w3-button w3-blue"
+                title="Click to Cancel"
+                ng-click="es.closePopup('CONFIRM_POPUP')">
+            {{es.lg.No}} &nbsp; <i class="fa fa-times"></i>
+        </button>
+    </div>
+</div>
+</body>
+</html>
+

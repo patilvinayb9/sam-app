@@ -1,0 +1,151 @@
+<span class="profileButtonSection">
+
+	<span ng-if="es.search.type=='preview'">
+		 <button class="w3-button w3-shadow w3-margin w3-circle w3-pink" title="{{es.lg.ConnectTitle}}"
+         >
+			<i class="fa fa-thumbs-up"></i>
+		 </button>
+		 <button class="w3-button w3-shadow w3-margin w3-circle w3-grey" title="{{es.lg.RemoveTitle}}"
+         >
+			<i class="fa fa-trash"></i>
+		 </button>
+	</span>
+    <!--{{es.search.type}} &#45;&#45; {{profile.profileConnection.connectionStatus}}-->
+
+    <!-- NO CONNECTION - [CONNECT, SHORTLIST,REMOVE] -->
+	<span ng-if=" ! (profile.profileConnection) &&  es.search.type !='preview' && es.loggedInUserId">
+		<span>
+			 <button class="w3-button w3-shadow w3-margin w3-circle w3-pink" title="{{es.lg.ConnectTitle}}"
+                     ng-click="es.sendConnectionRequest(profile,'wall')">
+				<i class="fa fa-thumbs-up"></i>
+			 </button>
+		</span>
+		<span ng-if="! (es.search.type == 'IShortlisted') ">
+			<button class="w3-button w3-shadow w3-margin w3-circle w3-blue" title="{{es.lg.ShortlistTitle}}"
+                    ng-click="es.shortlistProfile(profile, 'Shortlisted')">
+				<i class="fa fa-star"></i>
+			</button>
+		</span>
+		<button class="w3-button w3-shadow w3-margin w3-circle w3-grey" title="{{es.lg.RemoveTitle}}"
+                 ng-click="es.removeFromWall(profile,'wall')">
+			<i class="fa fa-trash"></i>
+		 </button>
+
+		<button class="w3-button w3-shadow w3-margin w3-circle w3-green"
+				ng-click="es.buySecureDetails(profile)">
+			<i class="fa fa-phone"></i>
+		</button>
+
+	</span>
+
+    <!-- REMOVED BY ME - [UNDO_REMOVE] -->
+	<span ng-if="profile.profileConnection.connectionStatus=='Removed'">
+		<button class="w3-button w3-shadow w3-margin w3-circle w3-pink" title="{{es.lg.UndoRemoveTitle}}"
+                ng-click="es.undoRemoveFromWall(profile)">
+            <i class="fa fa-undo"></i>
+		</button>
+	</span>
+
+	<span ng-if="profile.profileConnection.connectionStatus=='ContactViewed'">
+		<button class="w3-button w3-shadow w3-margin w3-circle w3-green"
+			ng-click="es.buySecureDetails(profile)">
+			<i class="fa fa-phone"></i>
+		</button>
+	</span>
+
+    <!-- SHORTLISTED BY ME - [CONNECT, REMOVE]-->
+	<span ng-if="profile.profileConnection.connectionStatus=='Shortlisted'">
+		<span>
+			 <button class="w3-button w3-shadow w3-margin w3-circle w3-pink" title="{{es.lg.ConnectTitle}}"
+                     ng-click="es.sendConnectionRequest(profile,'shortlist')">
+				<i class="fa fa-thumbs-up"></i>
+			 </button>
+		</span>
+		<button class="w3-button w3-shadow w3-margin w3-circle w3-grey" title="{{es.lg.RemoveTitle}}"
+                ng-click="es.removeFromWall(profile,'shortlist')">
+			<i class="fa fa-trash"></i>
+		</button>
+	</span>
+
+    <!-- WITHDRAWN BY ME / THEM - [CONECT]-->
+	<span ng-if="profile.profileConnection.connectionStatus=='Withdrawn'">
+		<span>
+			 <button class="w3-button w3-shadow w3-margin w3-circle w3-pink" title="{{es.lg.ConnectTitle}}"
+                     ng-click="es.sendConnectionRequest(profile,'withdraw')">
+				<i class="fa fa-thumbs-up"></i>
+			 </button>
+		</span>
+	</span>
+
+    <!-- REQUESTED BY ME - [WITHDRAW] -->
+	<span ng-if="profile.profileConnection.connectionStatus=='Requested' && profile.profileDetails.internalId==profile.profileConnection.internalTo">
+		<button class="w3-button w3-shadow w3-margin w3-circle w3-grey" title="{{es.lg.WithdrawTitle}}"
+                ng-click="es.withdrawRequest(profile, -1 * profile.profileConnection.amount)">
+			<i class="fa fa-undo"></i>
+		</button>
+		<span>
+			<button class="w3-button w3-shadow w3-margin w3-circle w3-pink"
+                    ng-click="es.getSecureDetails(profile)">
+				<i class="fa fa-phone"></i>
+			</button>
+		</span>
+	</span>
+
+    <!-- ACCEPTED BY ME - [CONTACT] -->
+	<span ng-if="profile.profileConnection.connectionStatus=='Accepted' && profile.profileDetails.internalId==profile.profileConnection.internalFrom">
+		<span>
+			<button class="w3-button w3-shadow w3-margin w3-circle w3-pink"
+                    ng-click="es.getSecureDetails(profile)">
+				<i class="fa fa-phone"></i>
+			</button>
+			<button class="w3-button w3-shadow w3-margin w3-circle w3-pink"
+                    ng-click="es.setSelectedView('walletsView')">
+				<i class="fa  fa-trophy"></i>
+			</button>
+		</span>
+		<br>
+	</span>
+
+    <!-- REJECETED BY ME - [NONE] -->
+	<span ng-if="profile.profileConnection.connectionStatus=='Rejected' && profile.profileDetails.internalId==profile.profileConnection.internalFrom">
+		<span>
+			<button class="w3-button w3-shadow w3-margin w3-circle w3-pink" title="{{es.lg.AcceptTitle}}"
+                    ng-click="es.actionRequest(profile, 'Accepted')">
+				<i class="fa fa-heart"></i>
+			</button>
+		</span>
+	</span>
+
+    <!-- REQUESTED BY THEM - [ACCEPT,REJECT]-->
+	<span ng-if="profile.profileConnection.connectionStatus=='Requested' && profile.profileDetails.internalId==profile.profileConnection.internalFrom">
+		<span>
+			<button class="w3-button w3-shadow w3-margin w3-circle w3-pink" title="{{es.lg.AcceptTitle}}"
+                    ng-click="es.actionRequest(profile, 'Accepted')">
+				<i class="fa fa-heart"></i>
+			</button>
+		</span>
+		<button class="w3-button w3-shadow w3-margin w3-circle w3-grey"
+                title="I do not like this profile, please Reject the request, Once rejected, this profile can NOT send you connection request!"
+                ng-click="es.actionRequest(profile, 'Rejected')">
+			<i class="fa fa-thumbs-down"></i>
+		</button>
+	</span>
+
+    <!-- ACCEPTED BY THEM - [CONTACT] -->
+	<span ng-if="profile.profileConnection.connectionStatus=='Accepted' && profile.profileDetails.internalId==profile.profileConnection.internalTo">
+		<span>
+			<button class="w3-button w3-shadow w3-margin w3-circle w3-pink" title="{{es.lg.ShowContactTitle}}"
+                    ng-click="es.getSecureDetails(profile)">
+				<i class="fa fa-phone"></i>
+			</button>
+			<button class="w3-button w3-shadow w3-margin w3-circle w3-pink"
+                    ng-click="es.setSelectedView('walletsView')">
+				<i class="fa  fa-trophy"></i>
+			</button>
+		</span>
+		<br>
+	</span>
+
+    <!-- REJECTED BY THEM - NO BUTTONS REQUIRED -->
+</span>
+
