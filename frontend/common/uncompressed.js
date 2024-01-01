@@ -48,7 +48,7 @@ appControllers.controller("edgeController",
 			function($scope, $http, $modal, $log, $sce, $window, $location, $routeParams, $cookies) {
 
 				$scope.es = {};
-				$scope.es.gtag_url = "https://marryeazy.com";
+				$scope.es.gtag_url = "https://lagnsthal.com";
 
 				$scope.es.location = $location;
 				$scope.es.pageID = $routeParams.pageID;

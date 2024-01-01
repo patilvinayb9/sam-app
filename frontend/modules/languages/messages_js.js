@@ -364,7 +364,7 @@ $scope.es.lg.Support="Support";
 $scope.es.lg.AnyIssues="Facing Issues? Click here."
 $scope.es.lg.RegisterToday="Complete your registration today and get premium membership absolutely free for first month. Offer valid for limited profiles only. Hurry!";
 
-$scope.es.lg.searchPartnerWithUs = "Find your soulmate with marryeazy.com";
+$scope.es.lg.searchPartnerWithUs = "Find your soulmate with lagnsthal.com";
 $scope.es.lg.tagLine1 = "India's #1 affordable and Secure Matrimony!";
 $scope.es.lg.tagLine2 = "Get free month of premium";
 $scope.es.lg.tagLine3 = "Click here to Register";

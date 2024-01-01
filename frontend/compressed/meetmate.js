@@ -2895,14 +2895,14 @@ $scope.es.minList = {
 ;
 var initLangOverrides = function initLangOverrides($scope, $http, $modal, $log, $sce, $cookies, $window){
     
-    $scope.es.appContextRoot="https://marryeazy.com";
-    $scope.es.appEAddress="care@marryeazy.com";
-    $scope.es.appEscEmailAddress="care@marryeazy.com";
+    $scope.es.appContextRoot="https://lagnsthal.com";
+    $scope.es.appEAddress="care@lagnsthal.com";
+    $scope.es.appEscEmailAddress="care@lagnsthal.com";
     $scope.es.appWhatsapp="+91-88880-84629";
-    $scope.es.appName="MarryEazy";
+    $scope.es.appName="Lagnsthal";
     $scope.es.appVersion=appVersion;
     $scope.es.appTagline="India's #1 Affordable and Secure Matrimony";
-    $scope.es.appDomain="marryeazy.com";
+    $scope.es.appDomain="lagnsthal.com";
 
     $scope.es.msg_lowBalance="Your balance is less than minimum balance required to send / accept request. Click here to recharge with at least Rs. ";
     
@@ -3277,7 +3277,7 @@ $scope.es.lg.Support="Support";
 $scope.es.lg.AnyIssues="Facing Issues? Click here."
 $scope.es.lg.RegisterToday="Complete your registration today and get premium membership absolutely free for first month. Offer valid for limited profiles only. Hurry!";
 
-$scope.es.lg.searchPartnerWithUs = "Find your soulmate with marryeazy.com";
+$scope.es.lg.searchPartnerWithUs = "Find your soulmate with lagnsthal.com";
 $scope.es.lg.tagLine1 = "India's #1 affordable and Secure Matrimony!";
 $scope.es.lg.tagLine2 = "Get free month of premium";
 $scope.es.lg.tagLine3 = "Click here to Register";
