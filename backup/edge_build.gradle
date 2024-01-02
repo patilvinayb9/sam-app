@@ -1,0 +1,3 @@
+springBoot {
+    mainClass = 'com.edge.core.utils.CoreDateUtils'
+}

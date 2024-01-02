@@ -1,59 +1,59 @@
 
  //WallController
-URL_LOAD_NEW_PROFILES = "server/unsecured/loadNewProfiles";
-URL_LOAD_WALL_PROFILES = "server/secured/loadWallProfiles";
-URL_ONE_TIME_SEARCH = "server/secured/oneTimeSearch";
-URL_GUEST_SEARCH = "server/unsecured/guestSearch";
-URL_LOAD_BRIDES = "server/unsecured/loadBrides";
-URL_LOAD_GROOMS = "server/unsecured/loadGrooms";
+URL_LOAD_NEW_PROFILES = "api/unsecured/loadNewProfiles";
+URL_LOAD_WALL_PROFILES = "api/secured/loadWallProfiles";
+URL_ONE_TIME_SEARCH = "api/secured/oneTimeSearch";
+URL_GUEST_SEARCH = "api/unsecured/guestSearch";
+URL_LOAD_BRIDES = "api/unsecured/loadBrides";
+URL_LOAD_GROOMS = "api/unsecured/loadGrooms";
 
 
  //Profile Internal Info Controller
-URL_REMOVE_FROM_WALL = "server/secured/removeFromWallById";
-URL_SHORTLIST_PROFILE = "server/secured/shortlistProfile";
-URL_LOAD_SHORTLISTED_PROFILES = "server/secured/loadShortlistedProfiles";
-URL_LOAD_BUY_CONTACTS_PROFILES = "server/secured/loadBuyContactsProfiles";
-URL_LOAD_REMOVED_PROFILES = "server/secured/loadRemovedProfiles";
-URL_UNDO_REMOVE_FROM_WALL = "server/secured/undoRemoveFromWall";
+URL_REMOVE_FROM_WALL = "api/secured/removeFromWallById";
+URL_SHORTLIST_PROFILE = "api/secured/shortlistProfile";
+URL_LOAD_SHORTLISTED_PROFILES = "api/secured/loadShortlistedProfiles";
+URL_LOAD_BUY_CONTACTS_PROFILES = "api/secured/loadBuyContactsProfiles";
+URL_LOAD_REMOVED_PROFILES = "api/secured/loadRemovedProfiles";
+URL_UNDO_REMOVE_FROM_WALL = "api/secured/undoRemoveFromWall";
 
 
  //Profile Connection Controller
-URL_SEND_CONNECTION_REQUEST = "server/secured/sendConnectionRequest";
-URL_SEARCH_PROFILES = "server/secured/searchProfiles";
-URL_WITHDRAW_REQUEST = "server/secured/withdrawRequest";
-URL_ACTION_REQUEST = "server/secured/actionRequest";
-URL_GET_SECURE_DETAILS = "server/secured/getSecureDetails";
-URL_BUY_SECURE_DETAILS = "server/secured/buySecureDetails";
+URL_SEND_CONNECTION_REQUEST = "api/secured/sendConnectionRequest";
+URL_SEARCH_PROFILES = "api/secured/searchProfiles";
+URL_WITHDRAW_REQUEST = "api/secured/withdrawRequest";
+URL_ACTION_REQUEST = "api/secured/actionRequest";
+URL_GET_SECURE_DETAILS = "api/secured/getSecureDetails";
+URL_BUY_SECURE_DETAILS = "api/secured/buySecureDetails";
 
 
  //ExpectationsController
-URL_LOAD_EXPECTATIONS = "server/secured/loadExpectations";
-URL_SET_EXPECTATIONS = "server/secured/setExpectations";
+URL_LOAD_EXPECTATIONS = "api/secured/loadExpectations";
+URL_SET_EXPECTATIONS = "api/secured/setExpectations";
 
  //Notifications Controller
-URL_LOAD_NOTIFICATIONS = "server/secured/loadNotifications";
-URL_LOAD_UNREAD_NOTIFICATIONS = "server/unsecured/loadUnreadNotifications";
-URL_MARK_NOTIFICATIONS_READ = "server/secured/markNotificationAsRead";
+URL_LOAD_NOTIFICATIONS = "api/secured/loadNotifications";
+URL_LOAD_UNREAD_NOTIFICATIONS = "api/unsecured/loadUnreadNotifications";
+URL_MARK_NOTIFICATIONS_READ = "api/secured/markNotificationAsRead";
 
  //Profile Controller
 
-URL_UPLOAD_IMAGE = "server/secured/uploadImage";
-URL_GET_IMAGE = "server/secured/getImage/{fileType}/{entityId}/{fileName}";
-URL_GET_THUMBNAIL = "server/secured/thumbnail/{entityId}";
-URL_GET_LOGGED_IN_PROFILE = "server/unsecured/profile/getLoggedInProfile";
-URL_UPDATE_MY_PROFILE = "server/secured/profile/updateMyProfile";
-URL_DELETE_MY_PROFILE = "server/secured/profile/deleteMyProfile";
-URL_SEARCH_BY_ID = "server/unsecured/searchById";
+URL_UPLOAD_IMAGE = "api/secured/uploadImage";
+URL_GET_IMAGE = "api/secured/getImage/{fileType}/{entityId}/{fileName}";
+URL_GET_THUMBNAIL = "api/secured/thumbnail/{entityId}";
+URL_GET_LOGGED_IN_PROFILE = "api/unsecured/profile/getLoggedInProfile";
+URL_UPDATE_MY_PROFILE = "api/secured/profile/updateMyProfile";
+URL_DELETE_MY_PROFILE = "api/secured/profile/deleteMyProfile";
+URL_SEARCH_BY_ID = "api/unsecured/searchById";
 
 
  //Wallet Controller
-URL_LOAD_WALLET_DETAILS = "server/secured/loadWalletDetails";
-URL_LOAD_WALLET_TRANSACTIONS = "server/secured/loadWalletTransactions";
-URL_RECHARGE_WALLET = "server/secured/rechargeWallet";
-URL_WALLET_SUCCESS = "server/unsecured/walletSuccess";
-URL_WALLET_FAILURE = "server/unsecured/walletFailure";
-URL_WALLET_SUCCESS_WEBHOOK = "server/unsecured/57297c487bbe5b0b15211670cd3986e0ebf09cbe7db571ff5f82360b560b1";
-URL_WALLET_FAILURE_WEBHOOK = "server/unsecured/57297c487bbe5b0b15211670cd3986e0ebf09cbe7db571ff5f82360b560b9";
+URL_LOAD_WALLET_DETAILS = "api/secured/loadWalletDetails";
+URL_LOAD_WALLET_TRANSACTIONS = "api/secured/loadWalletTransactions";
+URL_RECHARGE_WALLET = "api/secured/rechargeWallet";
+URL_WALLET_SUCCESS = "api/unsecured/walletSuccess";
+URL_WALLET_FAILURE = "api/unsecured/walletFailure";
+URL_WALLET_SUCCESS_WEBHOOK = "api/unsecured/57297c487bbe5b0b15211670cd3986e0ebf09cbe7db571ff5f82360b560b1";
+URL_WALLET_FAILURE_WEBHOOK = "api/unsecured/57297c487bbe5b0b15211670cd3986e0ebf09cbe7db571ff5f82360b560b9";
 
 
  //Admin Controller

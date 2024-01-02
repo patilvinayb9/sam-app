@@ -1,0 +1,222 @@
+package com.edge.app.modules.profileWallInfo;
+
+import com.edge.repositories.ProfileWallInfoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
+
+@Component
+public class ProfileWallInfoServiceImpl implements ProfileWallInfoService {
+
+    @Autowired
+    private ProfileWallInfoRepository profileWallInfoRepo;
+
+    @Override
+    public String getUnwantedProfiles(String internalId) {
+
+        String resultValue = "'" + internalId + "'";
+
+        Optional<ProfileWallInfo> profileWallInfoO = profileWallInfoRepo.findById(internalId);
+
+        if (profileWallInfoO.isPresent()) {
+            ProfileWallInfo profileWallInfo = profileWallInfoO.get();
+            resultValue += extractRemovedProfiles(profileWallInfo);
+            resultValue += "," + extractReadProfiles(profileWallInfo);
+            resultValue += "," + extractShortlistedProfiles(profileWallInfo);
+
+        }
+        return resultValue;
+    }
+
+
+    private String extractRemovedProfiles(ProfileWallInfo profileWallInfo) {
+        if (profileWallInfo == null || profileWallInfo.getRemovedProfiles() == null) {
+            return "''";
+        } else {
+            String removedProfiles = profileWallInfo.getRemovedProfiles();
+            if (removedProfiles == null || removedProfiles.trim().length() == 0) {
+                removedProfiles = "''";
+            }
+            return removedProfiles;
+        }
+    }
+
+
+    @Override
+    public String getRemovedProfiles(String internalId) {
+        Optional<ProfileWallInfo> profileWallInfoOptional = profileWallInfoRepo.findById(internalId);
+        if (!profileWallInfoOptional.isPresent()) {
+            return "''";
+        }
+        return extractRemovedProfiles(profileWallInfoOptional.get());
+    }
+
+    @Override
+    public String getReadProfiles(String internalId) {
+        Optional<ProfileWallInfo> profileWallInfoOptional = profileWallInfoRepo.findById(internalId);
+        if (!profileWallInfoOptional.isPresent()) {
+            return "''";
+        }
+        return extractReadProfiles(profileWallInfoOptional.get());
+    }
+
+    @Override
+    public String getShortlistedProfiles(String internalId) {
+        Optional<ProfileWallInfo> profileWallInfoOptional = profileWallInfoRepo.findById(internalId);
+        if (!profileWallInfoOptional.isPresent()) {
+            return "''";
+        }
+        return extractShortlistedProfiles(profileWallInfoOptional.get());
+    }
+
+
+    private String extractShortlistedProfiles(ProfileWallInfo profileWallInfo) {
+        if (profileWallInfo == null || profileWallInfo.getShortlistedProfiles() == null) {
+            return "''";
+        } else {
+            String shortlistedProfiles = profileWallInfo.getShortlistedProfiles();
+            if (shortlistedProfiles == null || shortlistedProfiles.trim().length() == 0) {
+                shortlistedProfiles = "''";
+            }
+            return shortlistedProfiles;
+        }
+    }
+
+    private String extractReadProfiles(ProfileWallInfo profileWallInfo) {
+        if (profileWallInfo == null || profileWallInfo.getReadProfiles() == null) {
+            return "''";
+        } else {
+            String readProfiles = profileWallInfo.getReadProfiles();
+            if (readProfiles == null || readProfiles.trim().length() == 0) {
+                readProfiles = "''";
+            }
+            return readProfiles;
+        }
+    }
+
+    @Override
+    @Transactional
+    public void undoRemoveFromWall(String internalId, String idToAdd) {
+
+        Optional<ProfileWallInfo> profileWallInfoOptional = profileWallInfoRepo.findById(internalId);
+
+        if (!profileWallInfoOptional.isPresent()) {
+            // HOW? TODO
+        } else {
+            ProfileWallInfo profileWallInfo = profileWallInfoOptional.get();
+            String removedProfiles = profileWallInfo.getRemovedProfiles();
+            if (removedProfiles.contains(idToAdd)) {
+                String val = "'" + idToAdd + "',";
+                removedProfiles = removedProfiles.replace(val, "");
+
+                val = ",'" + idToAdd + "'";
+                removedProfiles = removedProfiles.replace(val, "");
+
+                val = "'" + idToAdd + "'";
+                removedProfiles = removedProfiles.replace(val, "");
+            }
+            profileWallInfo.setRemovedProfiles(removedProfiles);
+            profileWallInfoRepo.save(profileWallInfo);
+        }
+
+    }
+
+    @Override
+    @Transactional
+    public void removeFromWallById(String internalId, String toRemove) {
+
+        ProfileWallInfo profileWallInfo = null;
+        Optional<ProfileWallInfo> profileWallInfoO = profileWallInfoRepo.findById(internalId);
+
+        if (!profileWallInfoO.isPresent()) {
+            profileWallInfo = new ProfileWallInfo();
+            profileWallInfo.setInternalId(internalId);
+            profileWallInfo.setRemovedProfiles("'" + toRemove + "'");
+        } else {
+            profileWallInfo = profileWallInfoO.get();
+            String removedProfiles = profileWallInfo.getRemovedProfiles();
+            if (removedProfiles == null || removedProfiles.trim().length() == 0) {
+                removedProfiles = "'" + toRemove + "'";
+            } else if (!removedProfiles.contains(toRemove)) {
+                removedProfiles = "'" + toRemove + "'," + removedProfiles;
+            }
+            profileWallInfo.setRemovedProfiles(removedProfiles);
+        }
+        removeFromShortlistedIfAny(profileWallInfo, toRemove);
+        profileWallInfoRepo.save(profileWallInfo);
+    }
+
+    @Override
+    @Transactional
+    public void removeFromShortlistedIfAnyById(String internalId, String toRemove) {
+        Optional<ProfileWallInfo> profileWallInfoO = profileWallInfoRepo.findById(internalId);
+        ProfileWallInfo profileWallInfo = profileWallInfoO.get();
+        removeFromShortlistedIfAny(profileWallInfo, toRemove);
+        profileWallInfoRepo.save(profileWallInfo);
+    }
+
+    private void removeFromShortlistedIfAny(ProfileWallInfo profileWallInfo, String toCheck) {
+        String shortlistedProfiles = profileWallInfo.getShortlistedProfiles();
+        if (shortlistedProfiles.contains(toCheck)) {
+            String val = "'" + toCheck + "',";
+            shortlistedProfiles = shortlistedProfiles.replace(val, "");
+
+            val = ",'" + toCheck + "'";
+            shortlistedProfiles = shortlistedProfiles.replace(val, "");
+
+            val = "'" + toCheck + "'";
+            shortlistedProfiles = shortlistedProfiles.replace(val, "");
+        }
+        profileWallInfo.setShortlistedProfiles(shortlistedProfiles);
+    }
+
+    @Override
+    @Transactional
+    public void shortlistProfileById(String internalId, String profileTo) {
+
+        ProfileWallInfo profileWallInfo = null;
+        Optional<ProfileWallInfo> profileWallInfoO = profileWallInfoRepo.findById(internalId);
+
+        if (!profileWallInfoO.isPresent()) {
+            profileWallInfo = new ProfileWallInfo();
+            profileWallInfo.setInternalId(internalId);
+            profileWallInfo.setShortlistedProfiles("'" + profileTo + "'");
+        } else {
+            profileWallInfo = profileWallInfoO.get();
+            String shortlistedProfiles = profileWallInfo.getShortlistedProfiles();
+            if (shortlistedProfiles == null || shortlistedProfiles.trim().length() == 0) {
+                shortlistedProfiles = "'" + profileTo + "'";
+            } else if (!shortlistedProfiles.contains(profileTo)) {
+                shortlistedProfiles = "'" + profileTo + "'," + shortlistedProfiles;
+            }
+            profileWallInfo.setShortlistedProfiles(shortlistedProfiles);
+        }
+        profileWallInfoRepo.save(profileWallInfo);
+    }
+
+    @Override
+    @Transactional
+    public void addToReadProfiles(String profileFrom, String profileTo) {
+
+        Optional<ProfileWallInfo> profileWallInfoOpt = profileWallInfoRepo.findById(profileFrom);
+        if (!profileWallInfoOpt.isPresent()) {
+            ProfileWallInfo profileWallInfo = new ProfileWallInfo();
+            profileWallInfo.setInternalId(profileFrom);
+            profileWallInfo.setReadProfiles("'" + profileTo + "'");
+            profileWallInfoRepo.save(profileWallInfo);
+        } else {
+            ProfileWallInfo profileWallInfo = profileWallInfoOpt.get();
+            String readProfiles = profileWallInfo.getReadProfiles();
+            if (readProfiles == null || readProfiles.trim().length() == 0) {
+                readProfiles = "'" + profileTo + "'";
+            } else if (!readProfiles.contains(profileTo)) {
+                readProfiles = "'" + profileTo + "'," + readProfiles;
+            }
+            profileWallInfo.setReadProfiles(readProfiles);
+            profileWallInfoRepo.save(profileWallInfo);
+        }
+    }
+
+}
