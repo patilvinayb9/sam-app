@@ -186,4 +186,10 @@ Frontend
 nvm use 16
 npx create-react-app frontend
 
+## new commands - lagnsthal
+
+npm install -g grunt
+cd frontend
+grunt
+
 

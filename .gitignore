@@ -3,3 +3,4 @@ samconfig.toml
 target
 samconfig.toml
 target
+frontend/node_modules/*
