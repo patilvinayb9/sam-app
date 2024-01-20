@@ -4,3 +4,4 @@ target
 samconfig.toml
 target
 frontend/node_modules/*
+.idea/*
